@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Stuff for class
+artifacts/
+bin/
+build/
+html/
+latex/
+docs.config
+doxygen_sqlite3.db
