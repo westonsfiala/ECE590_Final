@@ -1,0 +1,4 @@
+# Always set our shell scripts as lf endings.
+*	text=auto
+*.sh		text eol=lf
+*Makefile   text eol=lf
