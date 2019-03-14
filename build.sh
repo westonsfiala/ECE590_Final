@@ -11,5 +11,5 @@ set -o nounset
 make all
 
 # Run the tests for fraction.
-# echo "Running unit tests from AWS_TEST"
-# ./test/bin/aws_test
+echo "Running unit tests from ELMA"
+./elma/test/bin/test
