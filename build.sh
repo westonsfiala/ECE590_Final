@@ -15,3 +15,4 @@ make all
 # mkdir -p copiedTests;
 # cp /usr/local/src/elma/test/bin/test copiedTests/
 # ./copiedTests/test
+

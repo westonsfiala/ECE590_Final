@@ -3,23 +3,26 @@
 
 #include "elma/elma.h"
 
-class BattleBot : public elma::Process
-{
-    public:
+namespace bots {
 
-        BattleBot(string name) : Process(name) {}
-        void init();
-        void start();
-        void update();
-        void stop();
+    class BattleBot : public elma::Process
+    {
+        public:
 
-    private:
+            BattleBot(string name) : Process(name) {}
+            void init();
+            void start();
+            void update();
+            void stop();
 
-        int32_t mConstitution;
-        int32_t mStrength;
-        int32_t mDexterity;
-        int32_t mLevel;
-        int32_t mMovement;
-};
+        private:
+
+            int32_t mConstitution;
+            int32_t mStrength;
+            int32_t mDexterity;
+            int32_t mLevel;
+            int32_t mMovement;
+    };
+}
 
 #endif
