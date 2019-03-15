@@ -10,17 +10,17 @@ void BattleBot::init()
     int32_t mMovement = 0;
 }
 
-void start()
+void BattleBot::start()
 {
  
 }
 
-void update()
+void BattleBot::update()
 {
 
 }
 
-void stop()
+void BattleBot::stop()
 {
 
 }

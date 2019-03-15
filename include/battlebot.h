@@ -1,7 +1,7 @@
 #ifndef _BATTLEBOT_H
 #define _BATTLEBOT_H
 
-#include "elma.h"
+#include "elma/elma.h"
 
 class BattleBot : public elma::Process
 {

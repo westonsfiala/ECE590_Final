@@ -24,7 +24,7 @@ endif
 
 #Flags, Libraries and Includes
 CFLAGS      := -fsanitize=address -ggdb
-LIB         := -L../lib -lgtest -lpthread $(ASAN) -lelma -lssl -lcrypto -lcurses
+LIB         := -lgtest -lpthread $(ASAN) -lelma -lssl -lcrypto -lcurses
 INC         := -I$(INCDIR)
 
 #Files
@@ -67,8 +67,9 @@ spotless: clean
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
 	$(CC) $(CFLAGS) -o $(TARGETDIR)/$(TARGET) $(OBJECTS) $(LIB)
-	
+
 #Compile
-$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(HEADERS)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.cc $(HEADERS) 
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
+.PHONY: directories remake clean cleaner apidocs $(BUILDDIR) $(TARGETDIR)
