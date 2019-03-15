@@ -24,7 +24,7 @@ endif
 
 #Flags, Libraries and Includes
 CFLAGS      := -fsanitize=address -ggdb
-LIB         := -lgtest -lpthread $(ASAN) -lelma -lssl -lcrypto -lcurses
+LIB         := -L../lib -lgtest -lpthread $(ASAN) -lelma -lssl -lcrypto -lcurses
 INC         := -I$(INCDIR)
 
 #Files
