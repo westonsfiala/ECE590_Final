@@ -1,9 +1,8 @@
-# If we haven't downloaded the container yet. Do so.
-if (docker images -q klavins/ecep520:cppenv-http == "" )
-{
-    Write-Output "Pulling image from online"
-    docker image pull klavins/ecep520:cppenv-http
-}
-
 # Run docker again, but this time in the predone image provided by the professor.
-docker run --rm --volume ${pwd}:/source -it klavins/ecep520:cppenv-http bash -c "./clean.sh"
+#docker image pull klavins/elma:latest
+#docker run --rm --volume ${PWD}:/source -it klavins/elma:latest bash -c "./clean.sh"
+
+#docker image pull westonsfiala/ece590_final:latest
+#docker run --rm --volume ${PWD}:/source -it westonsfiala/ece590_final:latest bash -c "./clean.sh"
+
+docker run --rm --volume ${PWD}:/source -it ece590_final:latest bash -c "./clean.sh"

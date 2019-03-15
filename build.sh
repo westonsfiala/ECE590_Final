@@ -12,4 +12,9 @@ make all
 
 # Run the tests for fraction.
 echo "Running unit tests from ELMA"
-./elma/test/bin/test
+
+mkdir -p copiedTests;
+
+cp /usr/local/src/elma/test/bin/test copiedTests/
+
+./copiedTests/test
