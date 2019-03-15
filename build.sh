@@ -11,10 +11,7 @@ set -o nounset
 make all
 
 # Run the tests for fraction.
-echo "Running unit tests from ELMA"
-
-mkdir -p copiedTests;
-
-cp /usr/local/src/elma/test/bin/test copiedTests/
-
-./copiedTests/test
+# echo "Running unit tests from ELMA"
+# mkdir -p copiedTests;
+# cp /usr/local/src/elma/test/bin/test copiedTests/
+# ./copiedTests/test
