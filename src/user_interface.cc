@@ -11,5 +11,11 @@ UserInterface::UserInterface(BattleRunner& runner) : Process("user input"), mRun
 };
 
 void UserInterface::update() {
-    mvprintw(1,1,"Battle Runner is in development");
+
+    mvprintw(1,1,"Battle Runner is in development.");
+    mvprintw(2,1,"Press 0 key to exit.");
+
+    mvprintw(4,1,mRunner.get_state_name().c_str());
+    mvprintw(5,1,mRunner.get_actions().c_str());
+
 }

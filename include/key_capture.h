@@ -3,10 +3,10 @@
 
 #include "elma/elma.h"
 
-namespace bots {
+using namespace elma;
+using namespace std::chrono;
 
-    using namespace std::chrono;
-    using namespace elma;
+namespace bots {
 
     class KeyCapture : public Process {
 
@@ -18,6 +18,8 @@ namespace bots {
         void start() {}
         void update();
         void stop() {}
+
+        const static std::string sKeyPressEvent;
 
     };
 

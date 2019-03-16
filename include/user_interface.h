@@ -3,10 +3,10 @@
 
 #include "battle_runner.h"
 
-namespace bots {
+using namespace std::chrono;
+using namespace elma;
 
-    using namespace std::chrono;
-    using namespace elma;
+namespace bots {
 
     class UserInterface : public Process {
 

@@ -8,9 +8,9 @@ set -o errexit
 set -o nounset
 
 # Run docker again, but this time in the predone image provided by the professor.
-docker image pull klavins/elma:latest
-docker run --rm --volume `pwd`:/source -it klavins/elma:latest bash -c "./build.sh"
+# docker image pull klavins/elma:latest
+# docker run --rm --volume `pwd`:/source -it klavins/elma:latest bash -c "./build.sh"
 
-# docker image pull westonsfiala/ece590_final:latest
-# docker run --rm --volume `pwd`:/source -it westonsfiala/ece590_final:latest bash -c "./build.sh"
+docker image pull westonsfiala/ece590_final:latest
+docker run --rm --volume `pwd`:/source -it westonsfiala/ece590_final:latest bash -c "./build.sh"
 

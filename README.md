@@ -21,3 +21,19 @@ This project will be a success when a user is able to create their own battle bo
 1. Document how to create a battle bot and run the program.
 
 1. Turn in the project on time! March 22nd 2019
+
+## Progress updates
+
+### 3/16/2019
+
+1. Updated the elma [manager](elma/src/manager.cc) to run in simulated time through the use of `use_simulated_time()` and `use_real_time()`.
+    * This code was pulled ints the master elma repo by the professor.
+1. Updated the elma [manager](elma/src/manager.cc) to sleep until the next process is scheduled to run.
+    * Only sleeps when running in realtime mode
+    * [Pull request](https://github.com/klavinslab/elma/pull/6) has been submitted but no confirmation on if it will be accepted.
+1. Created base classes for the battlebot simulator.
+    * No funtionality in them yet, but they have been created
+    * See src & include directories
+1. Started looking at [ncurses](https://invisible-island.net/ncurses/man/ncurses.3x.html) documentation for how to do gui.
+
+No changes to milestones are needed at this time.

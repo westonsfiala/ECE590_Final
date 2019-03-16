@@ -3,9 +3,11 @@
 
 #include "elma/elma.h"
 
+using namespace elma;
+
 namespace bots {
 
-    class BattleBot : public elma::Process
+    class BattleBot : public Process
     {
         public:
 
