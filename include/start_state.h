@@ -19,16 +19,11 @@ namespace bots {
             void during();       
             void exit(const Event& e);
 
-            std::string get_actions();
             std::vector<std::string> get_display();
-            void act_on_key(int key);
+            void act_on_key(int keyPress);
             
             const static int sPrepareKey;
             const static std::string sPrepareForBattle;
-
-        private:
-
-            std::vector<Action> mAction;
     };
 }
 

@@ -22,10 +22,6 @@ namespace bots
             std::string get_actions();
             std::vector<std::string> get_display();
 
-            const static std::string sRestart;
-            const static std::string sBattleBegin;
-            const static std::string sBattleEnd;
-
         private:
             StartState mStartState;
             PrepareState mPrepareState;

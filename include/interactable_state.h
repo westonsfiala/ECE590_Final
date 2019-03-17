@@ -2,6 +2,7 @@
 #define _INTERACTABLE_STATE_H
 
 #include "elma/elma.h"
+#include "action.h"
 #include <vector>
 
 using namespace elma;
@@ -12,11 +13,18 @@ namespace bots {
     {
         public:
 
-            InteractableState(std::string name) : State(name) {}
+            InteractableState(std::string name);
 
-            virtual std::string get_actions() = 0;
+            std::string get_action_string();
+
             virtual std::vector<std::string> get_display() = 0;
             virtual void act_on_key(int keyPress) = 0;
+
+        protected:
+
+            std::vector<Action> mActions;
+
+            void process_key(int keyPress);
     };
 }
 

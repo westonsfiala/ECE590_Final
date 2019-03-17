@@ -10,7 +10,9 @@ UserInterface::UserInterface(BattleRunner& runner) : Process("user input"), mRun
     curs_set(0); // Do not show the cursor
 };
 
-void UserInterface::update() {
+void UserInterface::update() 
+{
+    clear();
 
     mvprintw(1,1,"Battle Runner is in development.");
     mvprintw(2,1,"Press 0 key to exit.");

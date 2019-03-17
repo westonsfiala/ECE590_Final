@@ -12,15 +12,16 @@ namespace bots {
     {
         public:
 
-            BattleState() : InteractableState("Battle State") {}
+            BattleState();
 
-            void entry(const Event& e) {};
-            void during() {};       
-            void exit(const Event& e) {};
+            void entry(const Event& e);
+            void during();   
+            void exit(const Event& e);
 
-            std::string get_actions() {return "";};
-            std::vector<std::string> get_display() {return {};};
-            void act_on_key(int key) {};
+            std::vector<std::string> get_display();
+            void act_on_key(int keyPress);
+
+            const static std::string sBattleEnd;
 
         private:
     };
