@@ -21,6 +21,8 @@ namespace bots {
             std::vector<std::string> get_display();
             void act_on_key(int keyPress);
 
+            const static std::string sBattleEndDisplay;
+            const static int sBattleEndKey;
             const static std::string sBattleEnd;
 
         private:

@@ -22,7 +22,8 @@ namespace bots {
             std::vector<std::string> get_display();
             void act_on_key(int keyPress);
             
-            const static int sPrepareKey;
+            const static std::string sPrepareForBattleDisplay;
+            const static int sPrepareForBattleKey;
             const static std::string sPrepareForBattle;
     };
 }

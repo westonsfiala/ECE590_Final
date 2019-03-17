@@ -2,10 +2,14 @@
 
 using namespace bots;
 
+const std::string ResultsState::sRestartDisplay = "Return to Start";
+const int ResultsState::sRestartKey = 'r';
 const std::string ResultsState::sRestart = "Restart";
 
 ResultsState::ResultsState() : InteractableState("Results State") 
 {
+    Action returnToStart(sRestartDisplay, sRestartKey, sRestart);
+    mActions.push_back(returnToStart);
 }
 
 void ResultsState::entry(const Event& e)
@@ -26,7 +30,7 @@ void ResultsState::exit(const Event& e)
 
 std::vector<std::string> ResultsState::get_display()
 {
-    return {"1", "2", "3"};
+    return {};
 }
 
 void ResultsState::act_on_key(int keyPress)

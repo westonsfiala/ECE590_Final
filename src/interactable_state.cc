@@ -15,7 +15,7 @@ std::string InteractableState::get_action_string()
     {
         char trig[2] = {static_cast<char>(action.trigger()), 0};
         std::string trigStr = trig;
-        actionString += trigStr + ": " + action.name();
+        actionString += trigStr + ": " + action.name() + ", ";
     }
 
     if(!actionString.empty())

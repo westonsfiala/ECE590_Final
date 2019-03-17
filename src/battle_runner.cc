@@ -22,7 +22,7 @@ std::string BattleRunner::get_state_name()
     return current_interactable().name();
 }
 
-std::string BattleRunner::get_actions()
+std::string BattleRunner::get_action_string()
 {
     return current_interactable().get_action_string();
 }
