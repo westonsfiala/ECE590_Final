@@ -25,6 +25,10 @@ namespace bots {
             const static std::string sPrepareForBattleDisplay;
             const static int sPrepareForBattleKey;
             const static std::string sPrepareForBattle;
+            
+            const static std::string sQuitDisplay;
+            const static int sQuitKey;
+            const static std::string sQuit;
     };
 }
 

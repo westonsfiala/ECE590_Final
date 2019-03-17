@@ -17,12 +17,6 @@ void KeyCapture::update() {
     // If no character is ready, getch() returns ERR.
     int capture = getch();
 
-    if(capture == '0')
-    {
-        halt();
-        return;
-    }
-
     auto& currentState = mRunner.current_interactable();
 
     currentState.act_on_key(capture);

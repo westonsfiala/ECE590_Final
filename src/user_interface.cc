@@ -15,10 +15,9 @@ void UserInterface::update()
     clear();
 
     mvprintw(1,1,"Battle Runner is in development.");
-    mvprintw(2,1,"Press 0 key to exit.");
 
-    mvprintw(4,1,mRunner.get_state_name().c_str());
-    mvprintw(5,1,mRunner.get_action_string().c_str());
+    mvprintw(3,1,mRunner.get_state_name().c_str());
+    mvprintw(4,1,mRunner.get_action_string().c_str());
 
     auto line = 6;
     for(auto displayLine : mRunner.get_display())
