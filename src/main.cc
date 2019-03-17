@@ -22,8 +22,11 @@ int main()
     m.schedule(ui, 10_ms)
      .schedule(runner, 10_ms)
      .schedule(keys, 10_ms)
-     .init()
-     .run();
+     .init();
+
+    runner.setup();
+    
+    m.run();
 
     endwin(); 
 };

@@ -7,23 +7,41 @@ using namespace elma;
 
 namespace bots {
 
+    class BattleRunner;
+
     class BattleBot : public Process
     {
         public:
 
-            BattleBot(string name) : Process(name) {}
+            BattleBot(string name, BattleRunner& runner);
             void init();
             void start();
             void update();
             void stop();
+
+            inline uint32_t AC() const { return 10 + mDexterity; }
+            
+            const static std::string sMove;
+            const static std::string sAttack;
+            const static std::string sDeath;
 
         private:
 
             int32_t mConstitution;
             int32_t mStrength;
             int32_t mDexterity;
-            int32_t mLevel;
-            int32_t mMovement;
+            uint32_t mMovement;
+
+            uint32_t mDamage;
+            uint32_t mHealth;
+            uint32_t mAC;
+
+            bool mRunning;
+
+            void move();
+            void attack();
+
+            BattleRunner& mRunner;
     };
 }
 

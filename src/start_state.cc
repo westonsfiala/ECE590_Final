@@ -11,7 +11,7 @@ const Action StartState::sQuitAction = Action(sQuit, sQuitKey, sQuit);
 
 StartState::StartState() : InteractableState("Start State") 
 {
-    mActions.push_back(sPrepareForBattleAction);
+    mActions.push_back(sQuitAction);
     mActions.push_back(sPrepareForBattleAction);
 }
 

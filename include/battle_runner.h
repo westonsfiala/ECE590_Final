@@ -1,7 +1,13 @@
 #ifndef _BATTLE_RUNNER_H
 #define _BATTLE_RUNNER_H
 
+#include <memory>
+#include <random>
+
 #include "elma/elma.h"
+
+#include "battlebot.h"
+
 #include "start_state.h"
 #include "prepare_state.h"
 #include "battle_state.h"
@@ -15,6 +21,9 @@ namespace bots
     {
         public:
             BattleRunner();
+            ~BattleRunner() = default;
+
+            void setup();
 
             InteractableState& current_interactable();
 
@@ -22,11 +31,27 @@ namespace bots
             std::string get_action_string();
             std::vector<std::string> get_display();
 
+            std::vector<std::string> get_recent_log(uint32_t logs);
+            const std::vector<std::string>& get_full_log();
+
+            int32_t roll(uint32_t dice, int32_t modifier);
+
+            const static std::string sLogEvent;
+            const static std::string sLogClearEvent;
+
         private:
             StartState mStartState;
             PrepareState mPrepareState;
             BattleState mBattleState;
             ResultsState mResultsState;
+
+            std::shared_ptr<BattleBot> mBot1;
+            std::shared_ptr<BattleBot> mBot2;
+
+            std::random_device mRd;
+
+            std::vector<std::string> mLog;
+
     };
 }
 

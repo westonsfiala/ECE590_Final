@@ -41,3 +41,9 @@ void ResultsState::act_on_key(int keyPress)
 {
     process_key(keyPress);
 }
+
+void ResultsState::set_bots(std::shared_ptr<BattleBot> bot1, std::shared_ptr<BattleBot> bot2) 
+{
+    mBot1 = bot1;
+    mBot2 = bot2;
+}

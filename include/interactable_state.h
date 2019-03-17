@@ -8,6 +8,8 @@
 using namespace elma;
 
 namespace bots {
+    
+    class BattleRunner;
 
     class InteractableState : public State
     {
@@ -26,6 +28,8 @@ namespace bots {
             std::vector<Action> mActions;
 
             void process_key(int keyPress);
+
+            BattleRunner& battle_runner();
     };
 }
 

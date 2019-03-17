@@ -1,8 +1,11 @@
 #ifndef _PREPARE_STATE_H
 #define _PREPARE_STATE_H
 
+#include <memory>
+
 #include "elma/elma.h"
 #include "interactable_state.h"
+#include "battlebot.h"
 
 using namespace elma;
 
@@ -21,13 +24,19 @@ namespace bots {
             std::string title();
             std::vector<std::string> get_display();
             void act_on_key(int keyPress);
+
+            void set_bots(std::shared_ptr<BattleBot> bot1, std::shared_ptr<BattleBot> bot2);
             
             const static std::string sBattleBegin;
             const static Action sBattleBeginAction;
 
             const static std::string sRestart;
             const static Action sRestartAction;
+
         private:
+
+            std::shared_ptr<BattleBot> mBot1;
+            std::shared_ptr<BattleBot> mBot2;
     };
 }
 

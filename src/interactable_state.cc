@@ -1,5 +1,7 @@
 #include "interactable_state.h"
 
+#include "battle_runner.h"
+
 using namespace bots;
 
 InteractableState::InteractableState(std::string name) : State(name), mActions({})
@@ -36,4 +38,9 @@ void InteractableState::process_key(int key)
             emit(Event(action.emit()));
         }
     }
+}
+
+BattleRunner& InteractableState::battle_runner() 
+{ 
+    return static_cast<BattleRunner&>(state_machine()); 
 }
