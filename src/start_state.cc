@@ -32,9 +32,25 @@ void StartState::exit(const Event& e)
 
 }
 
+std::string StartState::title()
+{
+    auto title = std::string("Welcome to the ") + name();
+    return title;
+}
+
 std::vector<std::string> StartState::get_display()
 {
-    return {};
+    std::vector<std::string> display;
+
+    display.push_back("Welcome to the battle bot simulator.");
+    display.push_back("");
+    display.push_back("In this game you will build a battle bot and face off against opponents.");
+    display.push_back("The game consists of 3 phases: preperation, battle, and results.");
+    display.push_back("");
+    display.push_back("To advance the the preperation phase, press one of the action keys above.");
+    display.push_back("");
+    display.push_back("Hope you enjoy it!");
+    return display;
 }
 
 void StartState::act_on_key(int keyPress)

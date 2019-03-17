@@ -17,9 +17,9 @@ InteractableState& BattleRunner::current_interactable()
     return static_cast<InteractableState&>(current());
 }
 
-std::string BattleRunner::get_state_name()
+std::string BattleRunner::get_state_title()
 {
-    return current_interactable().name();
+    return current_interactable().title();
 }
 
 std::string BattleRunner::get_action_string()

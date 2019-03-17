@@ -19,6 +19,7 @@ namespace bots {
             void during();       
             void exit(const Event& e);
 
+            std::string title();
             std::vector<std::string> get_display();
             void act_on_key(int keyPress);
             

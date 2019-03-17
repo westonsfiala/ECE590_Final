@@ -28,6 +28,12 @@ void BattleState::exit(const Event& e)
 
 }
 
+std::string BattleState::title()
+{
+    auto title = std::string("Welcome to the ") + name();
+    return title;
+}
+
 std::vector<std::string> BattleState::get_display()
 {
     return {};

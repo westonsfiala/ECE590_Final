@@ -28,6 +28,12 @@ void ResultsState::exit(const Event& e)
 
 }
 
+std::string ResultsState::title()
+{
+    auto title = std::string("Welcome to the ") + name();
+    return title;
+}
+
 std::vector<std::string> ResultsState::get_display()
 {
     return {};

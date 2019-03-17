@@ -35,6 +35,12 @@ void PrepareState::exit(const Event& e)
 
 }
 
+std::string PrepareState::title()
+{
+    auto title = std::string("Welcome to the ") + name();
+    return title;
+}
+
 std::vector<std::string> PrepareState::get_display()
 {
     return {};

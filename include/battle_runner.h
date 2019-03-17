@@ -18,7 +18,7 @@ namespace bots
 
             InteractableState& current_interactable();
 
-            std::string get_state_name();
+            std::string get_state_title();
             std::string get_action_string();
             std::vector<std::string> get_display();
 

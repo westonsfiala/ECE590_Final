@@ -16,7 +16,7 @@ void UserInterface::update()
 
     mvprintw(1,1,"Battle Runner is in development.");
 
-    mvprintw(3,1,mRunner.get_state_name().c_str());
+    mvprintw(3,1,mRunner.get_state_title().c_str());
     mvprintw(4,1,mRunner.get_action_string().c_str());
 
     auto line = 6;
