@@ -22,9 +22,8 @@ namespace bots {
             std::vector<std::string> get_display();
             void act_on_key(int keyPress);
 
-            const static std::string sRestartDisplay;
-            const static int sRestartKey;
             const static std::string sRestart;
+            const static Action sRestartAction;
 
         private:
     };

@@ -2,21 +2,16 @@
 
 using namespace bots;
 
-const std::string PrepareState::sBattleBeginDisplay = "Start Battle";
-const int PrepareState::sBattleBeginKey = 'b';
 const std::string PrepareState::sBattleBegin = "BattleBegin";
+const Action PrepareState::sBattleBeginAction = Action("Start Battle", 'b', sBattleBegin);
 
-const std::string PrepareState::sRestartDisplay = "Return to Start";
-const int PrepareState::sRestartKey = 'r';
 const std::string PrepareState::sRestart = "Restart";
+const Action PrepareState::sRestartAction = Action("Return to Start", 'r', sRestart);
 
 PrepareState::PrepareState() : InteractableState("Prepare State") 
 {
-    Action startBattle(sBattleBeginDisplay, sBattleBeginKey, sBattleBegin);
-    mActions.push_back(startBattle);
-
-    Action returnToStart(sRestartDisplay, sRestartKey, sRestart);
-    mActions.push_back(returnToStart);
+    mActions.push_back(sBattleBeginAction);
+    mActions.push_back(sRestartAction);
 }
 
 void PrepareState::entry(const Event& e)

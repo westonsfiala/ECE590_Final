@@ -8,24 +8,22 @@ namespace bots
     class Action
     {
         public:
-            Action(std::string name, int trigger, std::string output) 
+            Action(std::string name, int trigger, std::string emit) 
             {
                 mName = name;
                 mTrigger = trigger;
-                mOutput = output;
+                mEmit = emit;
             };
 
             inline std::string name() const {return mName;}
             inline int trigger() const {return mTrigger;}
-            inline std::string output() const {return mOutput;}
+            inline std::string emit() const {return mEmit;}
 
         private:
 
-            static const int sPrepareKey;
-
             std::string mName;
             int mTrigger;
-            std::string mOutput;
+            std::string mEmit;
 
     };
 }

@@ -2,14 +2,12 @@
 
 using namespace bots;
 
-const std::string BattleState::sBattleEndDisplay = "Abort Battle";
-const int BattleState::sBattleEndKey = 'a';
 const std::string BattleState::sBattleEnd = "BattleEnd";
+const Action BattleState::sBattleEndAction = Action("Abort Battle", 'a', sBattleEnd);
 
 BattleState::BattleState() : InteractableState("Battle State") 
 {
-    Action abortBattle(sBattleEndDisplay, sBattleEndKey, sBattleEnd);
-    mActions.push_back(abortBattle);
+    mActions.push_back(sBattleEndAction);
 }
 
 void BattleState::entry(const Event& e)

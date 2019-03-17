@@ -33,7 +33,7 @@ void InteractableState::process_key(int key)
     {
         if(action.trigger() == key)
         {
-            emit(Event(action.output()));
+            emit(Event(action.emit()));
         }
     }
 }
