@@ -32,11 +32,11 @@ void BattleRunner::setup()
     // Initialize the bots.
     mBot1 = std::make_shared<BattleBot>("bot1", *this);
     mBot2 = std::make_shared<BattleBot>("bot2", *this);
+    mBot1.init();
+    mBot2.init();
 
     mPrepareState.set_bots(mBot1, mBot2);
-
     mBattleState.set_bots(mBot1, mBot2);
-    
     mResultsState.set_bots(mBot1, mBot2);
 }
 

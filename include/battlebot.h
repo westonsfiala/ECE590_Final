@@ -36,8 +36,6 @@ namespace bots {
             uint32_t mHealth;
             uint32_t mAC;
 
-            bool mRunning;
-
             void move();
             void attack();
 

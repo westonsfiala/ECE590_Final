@@ -12,7 +12,8 @@ BattleState::BattleState() : InteractableState("Battle State")
 
 void BattleState::entry(const Event& e)
 {
-
+    battle_runner().schedule(mBot1,battle_runner().period());
+    battle_runner().schedule(mBot2,battle_runner().period());
 }
 
 void BattleState::during()
@@ -23,7 +24,7 @@ void BattleState::during()
 
 void BattleState::exit(const Event& e)
 {
-
+    
 }
 
 std::string BattleState::title()

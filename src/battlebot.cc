@@ -11,7 +11,6 @@ const std::string BattleBot::sDeath = "Death";
 
 BattleBot::BattleBot(string name, BattleRunner& runner) : Process(name), mRunner(runner) 
 {
-    mRunning = false;
 }
 
 void BattleBot::init()
@@ -31,7 +30,7 @@ void BattleBot::init()
         {
             return;
         }
-        
+
         auto attackData = e.value();
 
         // Don't care about attacking ourselves
@@ -83,11 +82,8 @@ void BattleBot::start()
 
 void BattleBot::update()
 {
-    if(mRunning)
-    {
-        move();
-        attack();
-    }
+    move();
+    attack();
 }
 
 void BattleBot::stop()
