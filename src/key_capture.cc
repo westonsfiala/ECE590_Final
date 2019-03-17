@@ -6,22 +6,24 @@
 using namespace bots;
 
 const std::string KeyCapture::sKeyPressEvent = "KeyPress";
+const std::string KeyCapture::sKeyPressKey = "Key";
 
-KeyCapture::KeyCapture() : Process("key capture") {};
+KeyCapture::KeyCapture(BattleRunner& runner) : Process("key capture"), mRunner(runner) {};
 
 void KeyCapture::update() {
 
     // USER INPUT
     // get a character from the user, if one is ready.
     // If no character is ready, getch() returns ERR.
-    int c = getch();
+    int capture = getch();
 
-    switch ( c ) {
-        case '0':
-            halt();
-            break;
-        default:
-            emit(Event("KeyPress", c));
-            break;
+    if(capture == '0')
+    {
+        halt();
+        return;
     }
+
+    auto& currentState = mRunner.current_interactable();
+
+    currentState.act_on_key(capture);
 }

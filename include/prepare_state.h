@@ -20,6 +20,7 @@ namespace bots {
 
             std::string get_actions() {return "";};
             std::vector<std::string> get_display() {return {};};
+            void act_on_key(int key) {};
 
         private:
     };

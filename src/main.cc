@@ -16,12 +16,12 @@ int main()
     Manager m;
 
     BattleRunner runner;
-    KeyCapture keys;
+    KeyCapture keys(runner);
     UserInterface ui(runner);
 
     m.schedule(ui, 10_ms)
-     .schedule(runner, 10_ms)  
-     .schedule(keys, 10_ms)     
+     .schedule(runner, 10_ms)
+     .schedule(keys, 10_ms)
      .init()
      .run();
 

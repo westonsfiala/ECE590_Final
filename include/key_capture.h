@@ -2,9 +2,9 @@
 #define _KEY_CAPTURE_H
 
 #include "elma/elma.h"
+#include "battle_runner.h"
 
 using namespace elma;
-using namespace std::chrono;
 
 namespace bots {
 
@@ -12,15 +12,19 @@ namespace bots {
 
         public:
 
-        KeyCapture();
+            KeyCapture(BattleRunner& runner);
 
-        void init() {}
-        void start() {}
-        void update();
-        void stop() {}
+            void init() {}
+            void start() {}
+            void update();
+            void stop() {}
 
-        const static std::string sKeyPressEvent;
+            const static std::string sKeyPressEvent;
+            const static std::string sKeyPressKey;
 
+        private:
+
+            BattleRunner& mRunner;
     };
 
 }

@@ -16,6 +16,7 @@ namespace bots {
 
             virtual std::string get_actions() = 0;
             virtual std::vector<std::string> get_display() = 0;
+            virtual void act_on_key(int keyPress) = 0;
     };
 }
 

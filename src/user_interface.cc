@@ -18,4 +18,11 @@ void UserInterface::update() {
     mvprintw(4,1,mRunner.get_state_name().c_str());
     mvprintw(5,1,mRunner.get_actions().c_str());
 
+    auto line = 6;
+    for(auto displayLine : mRunner.get_display())
+    {
+        mvprintw(line,1,displayLine.c_str());
+        ++line;
+    }
+
 }
