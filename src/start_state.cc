@@ -1,4 +1,5 @@
 #include "start_state.h"
+#include "battle_runner.h"
 
 using namespace bots;
 
@@ -17,6 +18,7 @@ StartState::StartState() : InteractableState("Start State")
 
 void StartState::entry(const Event& e)
 {
+    emit(Event(BattleRunner::sLogClearEvent));
 }
 
 void StartState::during()

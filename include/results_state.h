@@ -25,15 +25,10 @@ namespace bots {
             std::vector<std::string> get_display();
             void act_on_key(int keyPress);
 
-            void set_bots(std::shared_ptr<BattleBot> bot1, std::shared_ptr<BattleBot> bot2);
-
             const static std::string sRestart;
             const static Action sRestartAction;
 
         private:
-
-            std::shared_ptr<BattleBot> mBot1;
-            std::shared_ptr<BattleBot> mBot2;
     };
 }
 

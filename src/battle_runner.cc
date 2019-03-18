@@ -16,9 +16,9 @@ BattleRunner::BattleRunner() : StateMachine("runner")
     add_transition(ResultsState::sRestart, mResultsState, mStartState);
 }
 
-void BattleRunner::setup()
+void BattleRunner::setup(Manager& man)
 {
-    // Initialze the log
+    // Initialize the log
     watch(sLogEvent, [&](Event& e)
     {
         mLog.push_back(e.value().get<std::string>());
@@ -32,12 +32,9 @@ void BattleRunner::setup()
     // Initialize the bots.
     mBot1 = std::make_shared<BattleBot>("bot1", *this);
     mBot2 = std::make_shared<BattleBot>("bot2", *this);
-    mBot1.init();
-    mBot2.init();
 
-    mPrepareState.set_bots(mBot1, mBot2);
-    mBattleState.set_bots(mBot1, mBot2);
-    mResultsState.set_bots(mBot1, mBot2);
+    man.schedule(*mBot1, period());
+    man.schedule(*mBot2, period());
 }
 
 InteractableState& BattleRunner::current_interactable()
@@ -62,9 +59,12 @@ std::vector<std::string> BattleRunner::get_display()
 
 std::vector<std::string> BattleRunner::get_recent_log(uint32_t logs)
 {
-    auto retLog = mLog;
+    std::vector<std::string> retLog;
 
-    retLog.resize(logs);
+    for(auto iter = mLog.crbegin(); iter != mLog.crend() && retLog.size() != logs; ++iter)
+    {
+        retLog.push_back(*iter);
+    }
 
     return retLog;
 }

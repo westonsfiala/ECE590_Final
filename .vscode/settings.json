@@ -51,7 +51,8 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "algorithm": "cpp",
-        "xfunctional": "cpp"
+        "xfunctional": "cpp",
+        "random": "cpp"
     },
     "docker.defaultRegistryPath": "westonsfiala"
 }

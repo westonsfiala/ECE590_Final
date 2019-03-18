@@ -19,14 +19,14 @@ int main()
     KeyCapture keys(runner);
     UserInterface ui(runner);
 
-    m.schedule(ui, 10_ms)
-     .schedule(runner, 10_ms)
-     .schedule(keys, 10_ms)
-     .init();
+    m.schedule(ui, 10ms)
+     .schedule(runner, 1s)
+     .schedule(keys, 10ms);
 
-    runner.setup();
-    
-    m.run();
+    runner.setup(m);
+
+    m.init()
+     .run();
 
     endwin(); 
 };

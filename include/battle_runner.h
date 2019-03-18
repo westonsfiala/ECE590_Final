@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <random>
+#include <deque>
 
 #include "elma/elma.h"
 
@@ -23,7 +24,7 @@ namespace bots
             BattleRunner();
             ~BattleRunner() = default;
 
-            void setup();
+            void setup(Manager& man);
 
             InteractableState& current_interactable();
 
@@ -35,6 +36,9 @@ namespace bots
             const std::vector<std::string>& get_full_log();
 
             int32_t roll(uint32_t dice, int32_t modifier);
+
+            inline std::shared_ptr<BattleBot> get_bot1() { return mBot1; }
+            inline std::shared_ptr<BattleBot> get_bot2() { return mBot2; }
 
             const static std::string sLogEvent;
             const static std::string sLogClearEvent;

@@ -19,6 +19,9 @@ namespace bots {
             void update();
             void stop();
 
+            void start_battle();
+            inline void end_battle() { mRunning = false; }
+
             inline uint32_t AC() const { return 10 + mDexterity; }
             
             const static std::string sMove;
@@ -35,6 +38,8 @@ namespace bots {
             uint32_t mDamage;
             uint32_t mHealth;
             uint32_t mAC;
+
+            bool mRunning;
 
             void move();
             void attack();

@@ -11,18 +11,11 @@ const std::string BattleBot::sDeath = "Death";
 
 BattleBot::BattleBot(string name, BattleRunner& runner) : Process(name), mRunner(runner) 
 {
+    end_battle();
 }
 
 void BattleBot::init()
 {
-    mConstitution = 0;
-    mStrength = 0;
-    mDexterity = 0;
-    mMovement = 3;
-
-    mHealth = 20;
-    mDamage = 6;
-
     watch(sAttack, [&](Event& e)
     {
 
@@ -42,35 +35,39 @@ void BattleBot::init()
         // Check to see if the attack beat our AC
         if(attackData["attack"].get<uint32_t>() < AC())
         {
-            std::string blockLog = name() + " blocks with an AC of (" + std::to_string(AC()) + ")";
+            std::string blockLog = name() + " blocks";
             emit(Event(BattleRunner::sLogEvent, blockLog));
             return;
         }
-
-        std::string damageTaken = name() + " took " + attackData["damage"].get<std::string>() + ".";
-
-        emit(Event(BattleRunner::sLogEvent, damageTaken));
+        
 
         auto damage = attackData["damage"].get<uint32_t>();
+
+        std::string damageTaken = name() + " took (" + std::to_string(damage) + ") damage";
+
 
         // They hurt us
         if(mHealth < damage)
         {
             // We died
             mHealth = 0;
-
-            std::string deathLog = name() + " died.";
-            emit(Event(BattleRunner::sLogEvent, deathLog));
+            damageTaken += " and died";
 
             json deathData;
             deathData["killer"] = attackData["attacker"].get<std::string>();
             deathData["self"] = name();
 
-            emit(Event(sDeath, deathData));
+            
+            emit(Event(BattleRunner::sLogEvent, damageTaken));
+            emit(Event(BattleState::sBattleEnd, deathData));
         }
         else
         {
             mHealth -= damage;
+            
+            damageTaken += " reducing health to [" + std::to_string(mHealth) + "]";
+            
+            emit(Event(BattleRunner::sLogEvent, damageTaken));
         }
     });
 }
@@ -82,13 +79,29 @@ void BattleBot::start()
 
 void BattleBot::update()
 {
-    move();
-    attack();
+    if(mRunning)
+    {
+        move();
+        attack();
+    }
 }
 
 void BattleBot::stop()
 {
 
+}
+
+void BattleBot::start_battle() 
+{
+    mRunning = true;
+
+    mConstitution = 0;
+    mStrength = 0;
+    mDexterity = 0;
+    mMovement = 3;
+
+    mHealth = 20;
+    mDamage = 6;
 }
 
 void BattleBot::move()
@@ -104,7 +117,7 @@ void BattleBot::attack()
     attackData["attack"] = mRunner.roll(20,mStrength);
     attackData["damage"] = mRunner.roll(mDamage,mStrength);
 
-    std::string attackLog = attackData["attacker"].get<std::string>() + " attacks with a (" + attackData["attack"].get<std::string>() + ")";
+    std::string attackLog = attackData["attacker"].get<std::string>() + " attacks with a (" + std::to_string(attackData["attack"].get<uint32_t>()) + ") to hit";
 
     emit(Event(BattleRunner::sLogEvent, attackLog));
     emit(Event(sAttack, attackData));

@@ -1,5 +1,7 @@
 #include "battle_state.h"
 
+#include "battle_runner.h"
+
 using namespace bots;
 
 const std::string BattleState::sBattleEnd = "BattleEnd";
@@ -12,19 +14,19 @@ BattleState::BattleState() : InteractableState("Battle State")
 
 void BattleState::entry(const Event& e)
 {
-    battle_runner().schedule(mBot1,battle_runner().period());
-    battle_runner().schedule(mBot2,battle_runner().period());
+    battle_runner().get_bot1()->start_battle();
+    battle_runner().get_bot2()->start_battle();
 }
 
 void BattleState::during()
 {
-    
 
 }      
 
 void BattleState::exit(const Event& e)
 {
-    
+    battle_runner().get_bot1()->end_battle();
+    battle_runner().get_bot2()->end_battle();
 }
 
 std::string BattleState::title()
@@ -35,16 +37,10 @@ std::string BattleState::title()
 
 std::vector<std::string> BattleState::get_display()
 {
-    return {};
+    return battle_runner().get_recent_log(10);
 }
 
 void BattleState::act_on_key(int keyPress)
 {
     process_key(keyPress);
-}
-
-void BattleState::set_bots(std::shared_ptr<BattleBot> bot1, std::shared_ptr<BattleBot> bot2) 
-{
-    mBot1 = bot1;
-    mBot2 = bot2;
 }

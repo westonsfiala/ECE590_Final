@@ -1,4 +1,5 @@
 #include "results_state.h"
+#include "battle_runner.h"
 
 using namespace bots;
 
@@ -34,16 +35,10 @@ std::string ResultsState::title()
 
 std::vector<std::string> ResultsState::get_display()
 {
-    return {};
+    return battle_runner().get_recent_log(10);
 }
 
 void ResultsState::act_on_key(int keyPress)
 {
     process_key(keyPress);
-}
-
-void ResultsState::set_bots(std::shared_ptr<BattleBot> bot1, std::shared_ptr<BattleBot> bot2) 
-{
-    mBot1 = bot1;
-    mBot2 = bot2;
 }
