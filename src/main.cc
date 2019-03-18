@@ -19,13 +19,11 @@ int main()
     KeyCapture keys(runner);
     UserInterface ui(runner);
 
+    // Schedule all of the tasks.
     m.schedule(ui, 10ms)
      .schedule(runner, 1s)
-     .schedule(keys, 10ms);
-
-    runner.setup(m);
-
-    m.init()
+     .schedule(keys, 10ms)
+     .init()
      .run();
 
     endwin(); 

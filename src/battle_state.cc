@@ -14,26 +14,26 @@ BattleState::BattleState() : InteractableState("Battle State")
 
 void BattleState::entry(const Event& e)
 {
-    battle_runner().get_bot1()->start_battle();
-    battle_runner().get_bot2()->start_battle();
+    battle_runner().get_bot(1)->start_battle();
+    battle_runner().get_bot(2)->start_battle();
 }
 
 void BattleState::during()
 {
     if(battle_runner().num_updates() % 2)
     {
-        battle_runner().get_bot1()->trigger();
+        battle_runner().get_bot(1)->trigger();
     }
     else
     {
-        battle_runner().get_bot2()->trigger();
+        battle_runner().get_bot(2)->trigger();
     }
 }      
 
 void BattleState::exit(const Event& e)
 {
-    battle_runner().get_bot1()->end_battle();
-    battle_runner().get_bot2()->end_battle();
+    battle_runner().get_bot(1)->end_battle();
+    battle_runner().get_bot(2)->end_battle();
 }
 
 std::string BattleState::title()

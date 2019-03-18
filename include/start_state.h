@@ -29,6 +29,8 @@ namespace bots {
             const static int sQuitKey;
             const static std::string sQuit;
             const static Action sQuitAction;
+            
+            const static std::string sDestroyAllBots;
     };
 }
 

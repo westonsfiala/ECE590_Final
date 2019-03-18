@@ -10,6 +10,8 @@ const int StartState::sQuitKey = 'q';
 const std::string StartState::sQuit = "Quit";
 const Action StartState::sQuitAction = Action(sQuit, sQuitKey, sQuit);
 
+const std::string StartState::sDestroyAllBots = "DestroyAllBots";
+
 StartState::StartState() : InteractableState("Start State") 
 {
     mActions.push_back(sQuitAction);
@@ -18,7 +20,8 @@ StartState::StartState() : InteractableState("Start State")
 
 void StartState::entry(const Event& e)
 {
-    emit(Event(BattleRunner::sLogClearEvent));
+    battle_runner().clear_log();
+    battle_runner().destroy_all_bots();
 }
 
 void StartState::during()

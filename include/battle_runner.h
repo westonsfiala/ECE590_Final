@@ -1,7 +1,6 @@
 #ifndef _BATTLE_RUNNER_H
 #define _BATTLE_RUNNER_H
 
-#include <memory>
 #include <random>
 #include <deque>
 
@@ -24,8 +23,6 @@ namespace bots
             BattleRunner();
             ~BattleRunner() = default;
 
-            void setup(Manager& man);
-
             InteractableState& current_interactable();
 
             std::string get_state_title();
@@ -37,11 +34,13 @@ namespace bots
 
             int32_t roll(uint32_t dice, int32_t modifier);
 
-            inline std::shared_ptr<BattleBot> get_bot1() { return mBot1; }
-            inline std::shared_ptr<BattleBot> get_bot2() { return mBot2; }
-
-            const static std::string sLogEvent;
-            const static std::string sLogClearEvent;
+            void log(const std::string& text);
+            void clear_log();
+            BattleBot* get_bot(uint32_t botId);
+            uint32_t get_num_bots();
+            void create_bot(uint32_t botId);
+            void destroy_bot(uint32_t botId);
+            void destroy_all_bots();
 
         private:
             StartState mStartState;
@@ -49,8 +48,7 @@ namespace bots
             BattleState mBattleState;
             ResultsState mResultsState;
 
-            std::shared_ptr<BattleBot> mBot1;
-            std::shared_ptr<BattleBot> mBot2;
+            std::map<uint32_t,BattleBot> mBots;
 
             std::random_device mRd;
 

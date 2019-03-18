@@ -2,9 +2,6 @@
 
 using namespace bots;
 
-const std::string BattleRunner::sLogEvent = "Log";
-const std::string BattleRunner::sLogClearEvent = "LogClear";
-
 BattleRunner::BattleRunner() : StateMachine("runner")
 {
     // Set all the transitions
@@ -14,27 +11,6 @@ BattleRunner::BattleRunner() : StateMachine("runner")
     add_transition(PrepareState::sBattleBegin, mPrepareState, mBattleState);
     add_transition(BattleState::sBattleEnd, mBattleState, mResultsState);
     add_transition(ResultsState::sRestart, mResultsState, mStartState);
-}
-
-void BattleRunner::setup(Manager& man)
-{
-    // Initialize the log
-    watch(sLogEvent, [&](Event& e)
-    {
-        mLog.push_back(e.value().get<std::string>());
-    });
-
-    watch(sLogClearEvent, [&](Event& e)
-    {
-        mLog.clear();
-    });
-
-    // Initialize the bots.
-    mBot1 = std::make_shared<BattleBot>("bot1", *this);
-    mBot2 = std::make_shared<BattleBot>("bot2", *this);
-
-    man.schedule(*mBot1, period());
-    man.schedule(*mBot2, period());
 }
 
 InteractableState& BattleRunner::current_interactable()
@@ -80,3 +56,48 @@ int32_t BattleRunner::roll(uint32_t dice, int32_t modifier)
     return dist(mRd) + modifier;
 }
 
+void BattleRunner::log(const std::string& text)
+{
+    mLog.push_back(text);
+}
+
+void BattleRunner::clear_log()
+{
+    mLog.clear();
+}
+
+BattleBot* BattleRunner::get_bot(uint32_t botId) 
+{
+    if(mBots.count(botId) != 0)
+    {
+        return &mBots.at(botId);
+    }
+
+    return nullptr; 
+}
+
+uint32_t BattleRunner::get_num_bots()
+{
+    return mBots.size();
+}
+
+void BattleRunner::create_bot(uint32_t botId)
+{
+    if(botId >= 1 && botId <= 2)
+    {
+        mBots.emplace(botId, BattleBot("Bot" + std::to_string(botId), *this));
+    }
+}
+
+void BattleRunner::destroy_bot(uint32_t botId)
+{
+    if(mBots.count(botId) != 0)
+    {
+        mBots.erase(botId);
+    }
+}
+
+void BattleRunner::destroy_all_bots()
+{
+    mBots.clear();
+}
