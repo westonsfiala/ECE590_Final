@@ -20,7 +20,14 @@ void BattleState::entry(const Event& e)
 
 void BattleState::during()
 {
-
+    if(battle_runner().num_updates() % 2)
+    {
+        battle_runner().get_bot1()->trigger();
+    }
+    else
+    {
+        battle_runner().get_bot2()->trigger();
+    }
 }      
 
 void BattleState::exit(const Event& e)

@@ -14,16 +14,13 @@ void UserInterface::update()
 {
     clear();
 
-    mvprintw(1,1,"Battle Runner is in development.");
+    mvprintw(1,1,mRunner.get_state_title().c_str());
+    mvprintw(2,1,mRunner.get_action_string().c_str());
 
-    mvprintw(3,1,mRunner.get_state_title().c_str());
-    mvprintw(4,1,mRunner.get_action_string().c_str());
-
-    auto line = 6;
+    auto line = 4;
     for(auto displayLine : mRunner.get_display())
     {
         mvprintw(line,1,displayLine.c_str());
         ++line;
     }
-
 }
