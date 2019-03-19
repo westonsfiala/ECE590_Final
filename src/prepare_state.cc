@@ -26,12 +26,12 @@ const Action PrepareState::sDestroyBot2Action = Action(sDestroyBot + BOT2_KEY_ST
 
 PrepareState::PrepareState() : InteractableState("Prepare State") 
 {
-    set_actions();
+    
 }
 
 void PrepareState::entry(const Event& e)
 {
-
+    set_actions();
 }
 
 void PrepareState::during()

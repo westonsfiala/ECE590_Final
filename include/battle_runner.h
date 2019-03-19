@@ -2,7 +2,7 @@
 #define _BATTLE_RUNNER_H
 
 #include <random>
-#include <deque>
+#include <array>
 
 #include "elma/elma.h"
 
@@ -21,7 +21,7 @@ namespace bots
     {
         public:
             BattleRunner();
-            ~BattleRunner() = default;
+            ~BattleRunner();
 
             InteractableState& current_interactable();
 
@@ -42,13 +42,16 @@ namespace bots
             void destroy_bot(uint32_t botId);
             void destroy_all_bots();
 
+            const static uint32_t sMaxBots;
+            const static uint32_t sMinBots;
+
         private:
             StartState mStartState;
             PrepareState mPrepareState;
             BattleState mBattleState;
             ResultsState mResultsState;
 
-            std::map<uint32_t,BattleBot> mBots;
+            std::vector<BattleBot*> mBots;
 
             std::random_device mRd;
 

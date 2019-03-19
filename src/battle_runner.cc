@@ -2,8 +2,13 @@
 
 using namespace bots;
 
+const uint32_t BattleRunner::sMaxBots = 2;
+const uint32_t BattleRunner::sMinBots = 2;
+
 BattleRunner::BattleRunner() : StateMachine("runner")
 {
+    mBots.resize(sMaxBots);
+
     // Set all the transitions
     set_initial(mStartState);
     add_transition(StartState::sPrepareForBattle, mStartState, mPrepareState);
@@ -11,6 +16,11 @@ BattleRunner::BattleRunner() : StateMachine("runner")
     add_transition(PrepareState::sBattleBegin, mPrepareState, mBattleState);
     add_transition(BattleState::sBattleEnd, mBattleState, mResultsState);
     add_transition(ResultsState::sRestart, mResultsState, mStartState);
+}
+
+BattleRunner::~BattleRunner()
+{
+    destroy_all_bots();
 }
 
 InteractableState& BattleRunner::current_interactable()
@@ -68,9 +78,9 @@ void BattleRunner::clear_log()
 
 BattleBot* BattleRunner::get_bot(uint32_t botId) 
 {
-    if(mBots.count(botId) != 0)
+    if(botId > mBots.size())
     {
-        return &mBots.at(botId);
+        return mBots.at(botId);
     }
 
     return nullptr; 
@@ -78,26 +88,43 @@ BattleBot* BattleRunner::get_bot(uint32_t botId)
 
 uint32_t BattleRunner::get_num_bots()
 {
-    return mBots.size();
+    int validBots = 0;
+    for(const auto& bot : mBots)
+    {
+        if(bot != nullptr)
+        {
+            ++validBots;
+        }
+    }
+    return validBots;
 }
 
 void BattleRunner::create_bot(uint32_t botId)
 {
-    if(botId >= 1 && botId <= 2)
+    if(botId >= 0 && botId < mBots.size())
     {
-        mBots.emplace(botId, BattleBot("Bot" + std::to_string(botId), *this));
+        destroy_bot(botId);
+        mBots[botId] = new BattleBot("Bot" + std::to_string(botId), *this);
     }
 }
 
 void BattleRunner::destroy_bot(uint32_t botId)
 {
-    if(mBots.count(botId) != 0)
+    if(botId >= 0 && botId < mBots.size())
     {
-        mBots.erase(botId);
+        auto bot = mBots[botId];
+        if(bot != nullptr)
+        {
+            delete bot;
+            mBots[botId] = nullptr;
+        }
     }
 }
 
 void BattleRunner::destroy_all_bots()
 {
-    mBots.clear();
+    for(auto i = 0; i < mBots.size(); ++i)
+    {
+        destroy_bot(i);
+    }
 }
