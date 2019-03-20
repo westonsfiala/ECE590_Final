@@ -11,12 +11,37 @@ const std::string BattleBot::sDeath = "Death";
 
 BattleBot::BattleBot(string botName, BattleRunner& runner) : mName(botName), mRunner(runner) 
 {
+    mConstitution = 0;
+    mStrength = 0;
+    mDexterity = 0;
+    mMovement = 6;
 
+    mHealth = 20;
+    mDamage = 6;
 }
 
 std::string BattleBot::name() 
 { 
     return mName; 
+}
+
+std::string BattleBot::display()
+{
+    std::string botDisplay = name() + ": ";
+    if(mHealth == 0)
+    {
+        botDisplay += "[DEAD]";
+    }
+    else
+    {
+        botDisplay += "Health = [" + std::to_string(mHealth) + "], ";
+        botDisplay += "Attack = 1d20+" + std::to_string(attack_modifier()) + ", ";
+        botDisplay += "Damage = " + std::to_string(num_damage_die()) + "d" + std::to_string(damage_die()) + "+" + std::to_string(damage_modifier()) + ", ";
+        botDisplay += "AC = " + std::to_string(AC());
+        // botDisplay += ", Movement = " + std::to_string(movement());
+    }
+
+    return botDisplay;
 }
 
 void BattleBot::trigger()
@@ -94,13 +119,7 @@ bool BattleBot::is_dead()
 
 void BattleBot::start_battle() 
 {
-    mConstitution = 0;
-    mStrength = 0;
-    mDexterity = 0;
-    mMovement = 3;
 
-    mHealth = 20;
-    mDamage = 6;
 }
 
 void BattleBot::end_battle() 
@@ -113,6 +132,31 @@ uint32_t BattleBot::AC()
     return 10 + mDexterity; 
 }
 
+uint32_t BattleBot::movement()
+{
+    return mMovement;
+}
+
+int32_t BattleBot::attack_modifier()
+{
+    return mStrength + 2;
+}
+
+uint32_t BattleBot::num_damage_die()
+{
+    return 1;
+}
+
+uint32_t BattleBot::damage_die()
+{
+    return mDamage;
+}
+
+int32_t BattleBot::damage_modifier()
+{
+    return mStrength;
+}
+
 void BattleBot::move()
 {
     // TODO when map is created.
@@ -123,8 +167,8 @@ void BattleBot::attack()
     json attackData;
 
     attackData["attacker"] = name();
-    attackData["attack"] = mRunner.roll(20,mStrength);
-    attackData["damage"] = mRunner.roll(mDamage,mStrength);
+    attackData["attack"] = mRunner.roll(1, 20, attack_modifier());
+    attackData["damage"] = mRunner.roll(num_damage_die(), damage_die(), damage_modifier());
 
     mRunner.react_bots(this, attackData);
 }

@@ -16,6 +16,7 @@ namespace bots {
             BattleBot(string name, BattleRunner& runner);
 
             std::string name();
+            std::string display();
 
             void trigger();
             void react(BattleBot* attacker, json attackData);
@@ -25,7 +26,12 @@ namespace bots {
             void start_battle();
             void end_battle();
 
-            uint32_t AC();
+            virtual uint32_t movement();
+            virtual uint32_t AC();
+            virtual int32_t attack_modifier();
+            virtual uint32_t num_damage_die();
+            virtual uint32_t damage_die();
+            virtual int32_t damage_modifier();
             
             const static std::string sMove;
             const static std::string sAttack;

@@ -66,10 +66,15 @@ const std::vector<std::string>& BattleRunner::get_full_log()
     return mLog;
 }
 
-int32_t BattleRunner::roll(uint32_t dice, int32_t modifier)
+int32_t BattleRunner::roll(uint32_t numDice, uint32_t dice, int32_t modifier)
 {
     std::uniform_int_distribution<uint32_t> dist(1, dice);
-    return dist(mRd) + modifier;
+    auto result = 0;
+    for(auto i = 0; i < numDice; ++i)
+    {
+        result += dist(mRd);
+    }
+    return result + modifier;
 }
 
 void BattleRunner::log(const std::string& text)

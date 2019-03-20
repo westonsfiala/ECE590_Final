@@ -34,6 +34,7 @@ void BattleState::exit(const Event& e)
     {
         bot->end_battle();
     }
+    mBots.clear();
 }
 
 std::string BattleState::title()
@@ -44,7 +45,20 @@ std::string BattleState::title()
 
 std::vector<std::string> BattleState::get_display()
 {
-    return battle_runner().get_recent_log(10);
+    std::vector<std::string> battleDisplay;
+
+    for(auto bot : mBots)
+    {
+        battleDisplay.push_back(bot->display());
+    }
+    
+    battleDisplay.push_back("");
+    for(const auto& battleLog : battle_runner().get_recent_log(mBots.size() * 2))
+    {
+        battleDisplay.push_back(battleLog);
+    }
+
+    return battleDisplay;
 }
 
 void BattleState::act_on_key(int keyPress)

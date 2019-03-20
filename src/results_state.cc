@@ -18,7 +18,6 @@ void ResultsState::entry(const Event& e)
 
 void ResultsState::during()
 {
-    
 
 }      
 

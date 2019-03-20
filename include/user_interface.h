@@ -3,7 +3,6 @@
 
 #include "battle_runner.h"
 
-using namespace std::chrono;
 using namespace elma;
 
 namespace bots {
@@ -20,6 +19,9 @@ namespace bots {
         void stop() {}
 
         private:
+
+        void print_line(uint32_t row, const std::string& text);
+
         BattleRunner& mRunner;
 
     };
