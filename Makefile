@@ -69,7 +69,7 @@ $(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
 	$(CC) $(CFLAGS) -o $(TARGETDIR)/$(TARGET) $(OBJECTS) $(LIB)
 
 #Compile
-$(BUILDDIR)/%.o: $(SRCDIR)/%.cc $(HEADERS) 
+$(BUILDDIR)/%.o: $(SRCDIR)/%.cc $(HEADERS)/%.h 
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 .PHONY: directories remake clean cleaner apidocs $(BUILDDIR) $(TARGETDIR)

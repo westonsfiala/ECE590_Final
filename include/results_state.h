@@ -30,7 +30,8 @@ namespace bots {
 
         private:
 
-            BattleBot* winner(std::vector<BattleBot*> bots);
+            bool has_winner(const std::vector<BattleBot*>& bots);
+            BattleBot* winner(const std::vector<BattleBot*>& bots);
 
             std::vector<std::string> mDisplay;
     };

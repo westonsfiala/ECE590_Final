@@ -22,7 +22,15 @@ void ResultsState::entry(const Event& e)
 
     auto victor = winner(bots);
 
-    mDisplay.push_back("{" + victor->name() + " is the victor! Congrats! }");
+    if(victor != nullptr)
+    {
+        mDisplay.push_back("{" + victor->name() + " is the victor! Congrats! }");
+    }
+    else
+    {
+        mDisplay.push_back("No bot won this battle.");
+    }
+
     mDisplay.push_back("");
 
     for(auto bot : bots)
@@ -57,14 +65,29 @@ void ResultsState::act_on_key(int keyPress)
     process_key(keyPress);
 }
 
-
-BattleBot* ResultsState::winner(std::vector<BattleBot*> bots)
+bool ResultsState::has_winner(const std::vector<BattleBot*>& bots)
 {
+    auto living = 0;
     for(auto bot : bots)
     {
         if(bot != nullptr && !bot->is_dead())
         {
-            return bot;
+            living++;
+        }
+    }
+    return living == 1;
+}
+
+BattleBot* ResultsState::winner(const std::vector<BattleBot*>& bots)
+{
+    if(has_winner(bots))
+    {
+        for(auto bot : bots)
+        {
+            if(bot != nullptr && !bot->is_dead())
+            {
+                return bot;
+            }
         }
     }
     return nullptr;
