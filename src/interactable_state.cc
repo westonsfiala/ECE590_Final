@@ -9,24 +9,19 @@ InteractableState::InteractableState(std::string name) : State(name), mActions({
     
 }
 
-std::string InteractableState::get_action_string()
+std::vector<std::string> InteractableState::get_action_strings()
 {
-    std::string actionString = "";
+    std::vector<std::string> actionStrings;
 
     for(const auto& action : mActions)
     {
         char trig[2] = {static_cast<char>(action.trigger()), 0};
         std::string trigStr = trig;
-        actionString += trigStr + ": " + action.name() + ", ";
+        trigStr += ": " + action.name();
+        actionStrings.push_back(trigStr);
     }
 
-    if(!actionString.empty())
-    {
-        actionString.pop_back();
-        actionString.pop_back();
-    }
-
-    return actionString;
+    return actionStrings;
 }
 
 void InteractableState::process_key(int key)

@@ -39,9 +39,9 @@ std::string BattleRunner::get_state_title()
     return current_interactable().title();
 }
 
-std::string BattleRunner::get_action_string()
+std::vector<std::string> BattleRunner::get_action_strings()
 {
-    return current_interactable().get_action_string();
+    return current_interactable().get_action_strings();
 }
 
 std::vector<std::string> BattleRunner::get_display()

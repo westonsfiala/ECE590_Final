@@ -54,7 +54,8 @@
         "xfunctional": "cpp",
         "random": "cpp",
         "array": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "fstream": "cpp"
     },
     "docker.defaultRegistryPath": "westonsfiala"
 }
