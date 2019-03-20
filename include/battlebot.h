@@ -18,6 +18,9 @@ namespace bots {
             std::string name();
 
             void trigger();
+            void react(BattleBot* attacker, json attackData);
+
+            bool is_dead();
 
             void start_battle();
             void end_battle();
@@ -30,7 +33,6 @@ namespace bots {
 
         protected:
 
-            void watch(string event_name, std::function<void(Event&)> handler);
             void emit(const Event& event);
 
             std::string mName;

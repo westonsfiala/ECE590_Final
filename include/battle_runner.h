@@ -3,6 +3,7 @@
 
 #include <random>
 #include <array>
+#include <fstream>
 
 #include "elma/elma.h"
 
@@ -43,6 +44,8 @@ namespace bots
             void destroy_bot(uint32_t botId);
             void destroy_all_bots();
 
+            void react_bots(BattleBot* attacker, json attackData);
+
             const static uint32_t sMaxBots;
             const static uint32_t sMinBots;
 
@@ -57,6 +60,7 @@ namespace bots
             std::random_device mRd;
 
             std::vector<std::string> mLog;
+            std::fstream mFileLog;
 
     };
 }

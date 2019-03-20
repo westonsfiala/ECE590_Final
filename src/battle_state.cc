@@ -16,7 +16,7 @@ void BattleState::entry(const Event& e)
 {
     battle_runner().log("Entering " + name());
     mBots = battle_runner().get_valid_bots();
-    for(auto& bot : mBots)
+    for(auto bot : mBots)
     {
         bot->start_battle();
     }

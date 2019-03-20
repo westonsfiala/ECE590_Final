@@ -5,7 +5,7 @@ using namespace bots;
 const uint32_t BattleRunner::sMaxBots = 2;
 const uint32_t BattleRunner::sMinBots = 2;
 
-BattleRunner::BattleRunner() : StateMachine("runner")
+BattleRunner::BattleRunner() : StateMachine("runner"), mFileLog("log.txt", mFileLog.trunc | mFileLog.out)
 {
     mBots.resize(sMaxBots);
 
@@ -16,6 +16,12 @@ BattleRunner::BattleRunner() : StateMachine("runner")
     add_transition(PrepareState::sBattleBegin, mPrepareState, mBattleState);
     add_transition(BattleState::sBattleEnd, mBattleState, mResultsState);
     add_transition(ResultsState::sRestart, mResultsState, mStartState);
+
+    if (!mFileLog.is_open()) {
+        log("failed to open log");
+    } else {
+        log("opened log");
+    }
 }
 
 BattleRunner::~BattleRunner()
@@ -69,6 +75,10 @@ int32_t BattleRunner::roll(uint32_t dice, int32_t modifier)
 void BattleRunner::log(const std::string& text)
 {
     mLog.push_back(text);
+    if(mFileLog.is_open())
+    {
+        mFileLog << text << std::endl;
+    }
 }
 
 void BattleRunner::clear_log()
@@ -108,8 +118,11 @@ void BattleRunner::create_bot(uint32_t botId)
 {
     if(botId >= 0 && botId < mBots.size())
     {
+        log("creating Bot:");
         destroy_bot(botId);
-        mBots[botId] = new BattleBot("Bot" + std::to_string(botId + 1), *this);
+        auto botname = "Bot" + std::to_string(botId + 1);
+        auto newbot = new BattleBot(botname, *this);
+        mBots[botId] = newbot;
         log("Created Bot: " + mBots[botId]->name());
     }
 }
@@ -118,11 +131,10 @@ void BattleRunner::destroy_bot(uint32_t botId)
 {
     if(botId >= 0 && botId < mBots.size())
     {
-        auto bot = mBots[botId];
-        if(bot != nullptr)
+        if(mBots[botId] != nullptr)
         {
             log("Destroying Bot: " + mBots[botId]->name());
-            delete bot;
+            delete mBots[botId];
             mBots[botId] = nullptr;
         }
     }
@@ -133,5 +145,13 @@ void BattleRunner::destroy_all_bots()
     for(auto i = 0; i < mBots.size(); ++i)
     {
         destroy_bot(i);
+    }
+}
+
+void BattleRunner::react_bots(BattleBot* attacker, json attackData)
+{
+    for(auto& bot : get_valid_bots())
+    {
+        bot->react(attacker, attackData);
     }
 }
