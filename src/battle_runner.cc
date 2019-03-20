@@ -78,7 +78,7 @@ void BattleRunner::clear_log()
 
 BattleBot* BattleRunner::get_bot(uint32_t botId) 
 {
-    if(botId > mBots.size())
+    if(botId < mBots.size())
     {
         return mBots.at(botId);
     }
@@ -88,12 +88,17 @@ BattleBot* BattleRunner::get_bot(uint32_t botId)
 
 uint32_t BattleRunner::get_num_bots()
 {
-    int validBots = 0;
+    return get_valid_bots().size();
+}
+
+std::vector<BattleBot*> BattleRunner::get_valid_bots()
+{
+    std::vector<BattleBot*> validBots;
     for(const auto& bot : mBots)
     {
         if(bot != nullptr)
         {
-            ++validBots;
+            validBots.push_back(bot);
         }
     }
     return validBots;
@@ -104,7 +109,8 @@ void BattleRunner::create_bot(uint32_t botId)
     if(botId >= 0 && botId < mBots.size())
     {
         destroy_bot(botId);
-        mBots[botId] = new BattleBot("Bot" + std::to_string(botId), *this);
+        mBots[botId] = new BattleBot("Bot" + std::to_string(botId + 1), *this);
+        log("Created Bot: " + mBots[botId]->name());
     }
 }
 
@@ -115,6 +121,7 @@ void BattleRunner::destroy_bot(uint32_t botId)
         auto bot = mBots[botId];
         if(bot != nullptr)
         {
+            log("Destroying Bot: " + mBots[botId]->name());
             delete bot;
             mBots[botId] = nullptr;
         }

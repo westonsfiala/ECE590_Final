@@ -13,24 +13,16 @@ const Action PrepareState::sRestartAction = Action("Return to Start", 'r', sRest
 const std::string PrepareState::sCreateBot = "Create Bot";
 const std::string PrepareState::sDestroyBot = "Destroy Bot";
 
-const static int BOT1_KEY = '1';
-const static std::string BOT1_KEY_STR = "1";
-const Action PrepareState::sCreateBot1Action = Action(sCreateBot + BOT1_KEY_STR, BOT1_KEY, "");
-const Action PrepareState::sDestroyBot1Action = Action(sCreateBot + BOT1_KEY_STR, BOT1_KEY, "");
-
-const static int BOT2_KEY = '2';
-const static std::string BOT2_KEY_STR = "2";
-const Action PrepareState::sCreateBot2Action = Action(sDestroyBot + BOT2_KEY_STR, BOT2_KEY, "");
-const Action PrepareState::sDestroyBot2Action = Action(sDestroyBot + BOT2_KEY_STR, BOT2_KEY, "");
+const static int ASCII_1 = 49;
 
 
 PrepareState::PrepareState() : InteractableState("Prepare State") 
 {
-    
 }
 
 void PrepareState::entry(const Event& e)
 {
+    battle_runner().log("Entering " + name());
     set_actions();
 }
 
@@ -52,38 +44,22 @@ std::string PrepareState::title()
 
 std::vector<std::string> PrepareState::get_display()
 {
-
-
-    return {};
+    return battle_runner().get_recent_log(10);
 }
 
 void PrepareState::act_on_key(int keyPress)
 {
-    // Create/Destroy bot1
-    if(keyPress == BOT1_KEY)
-    {
-        if(battle_runner().get_bot(1) == nullptr)
-        {
-            battle_runner().create_bot(1);
-        }
-        else
-        {
-            battle_runner().destroy_bot(1);
-        }
-        set_actions();
-        return;
-    }
+    auto botKey = keyPress - ASCII_1;
 
-    // Create/Destroy bot2
-    if(keyPress == BOT2_KEY)
+    if(botKey >= 0 && botKey <= BattleRunner::sMaxBots)
     {
-        if(battle_runner().get_bot(2) == nullptr)
+        if(battle_runner().get_bot(botKey) == nullptr)
         {
-            battle_runner().create_bot(2);
+            battle_runner().create_bot(botKey);
         }
         else
         {
-            battle_runner().destroy_bot(2);
+            battle_runner().destroy_bot(botKey);
         }
         set_actions();
         return;
@@ -98,29 +74,25 @@ void PrepareState::set_actions()
 
     mActions.push_back(sRestartAction);
 
-    bool hasBot1 = battle_runner().get_bot(1) != nullptr;
-    bool hasBot2 = battle_runner().get_bot(2) != nullptr;
-
-    if(hasBot1 && hasBot2)
+    if(battle_runner().get_num_bots() >= BattleRunner::sMinBots)
     {
         mActions.push_back(sBattleBeginAction);
     }
 
-    if(hasBot1)
+    for(auto i = 0; i < BattleRunner::sMaxBots; ++i)
     {
-        mActions.push_back(sDestroyBot1Action);
-    }
-    else
-    {
-        mActions.push_back(sCreateBot1Action);
-    }
-    
-    if(hasBot2)
-    {
-        mActions.push_back(sDestroyBot2Action);
-    }
-    else
-    {
-        mActions.push_back(sCreateBot2Action);
+        auto bot = battle_runner().get_bot(i);
+        // Bots are 1 indexed, and we want to show the actual number that is typed instead of some nullesque character.
+        auto actionKey = i+ASCII_1;
+        if(bot == nullptr)
+        {
+            Action createAction(sCreateBot, actionKey, "");
+            mActions.push_back(createAction);
+        }
+        else
+        {
+            Action createAction(sDestroyBot, actionKey, "");
+            mActions.push_back(createAction);
+        }
     }
 }

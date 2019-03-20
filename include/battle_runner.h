@@ -38,6 +38,7 @@ namespace bots
             void clear_log();
             BattleBot* get_bot(uint32_t botId);
             uint32_t get_num_bots();
+            std::vector<BattleBot*> get_valid_bots();
             void create_bot(uint32_t botId);
             void destroy_bot(uint32_t botId);
             void destroy_all_bots();

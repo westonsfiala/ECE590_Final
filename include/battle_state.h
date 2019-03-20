@@ -29,6 +29,8 @@ namespace bots {
             const static Action sBattleEndAction;
 
         private:
+
+            std::vector<BattleBot*> mBots;
     };
 }
 

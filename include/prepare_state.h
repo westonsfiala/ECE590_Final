@@ -33,11 +33,6 @@ namespace bots {
 
             const static std::string sCreateBot;
             const static std::string sDestroyBot;
-            
-            const static Action sCreateBot1Action;
-            const static Action sCreateBot2Action;
-            const static Action sDestroyBot1Action;
-            const static Action sDestroyBot2Action;
 
         private:
 

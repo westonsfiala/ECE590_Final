@@ -19,5 +19,9 @@ void KeyCapture::update() {
 
     auto& currentState = mRunner.current_interactable();
 
-    currentState.act_on_key(capture);
+    if(capture != ERR)
+    {
+        currentState.act_on_key(capture);
+    }
+
 }

@@ -13,7 +13,7 @@ ResultsState::ResultsState() : InteractableState("Results State")
 
 void ResultsState::entry(const Event& e)
 {
-
+    battle_runner().log("Entering " + name());
 }
 
 void ResultsState::during()
