@@ -29,6 +29,10 @@ namespace bots {
             const static Action sRestartAction;
 
         private:
+
+            BattleBot* winner(std::vector<BattleBot*> bots);
+
+            std::vector<std::string> mDisplay;
     };
 }
 

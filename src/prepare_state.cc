@@ -44,7 +44,7 @@ std::string PrepareState::title()
 
 std::vector<std::string> PrepareState::get_display()
 {
-    return battle_runner().get_recent_log(10);
+    return {};
 }
 
 void PrepareState::act_on_key(int keyPress)

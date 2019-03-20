@@ -27,8 +27,13 @@ namespace bots {
 
             const static std::string sBattleEnd;
             const static Action sBattleEndAction;
+            const static Action sGoToResultsAction;
 
         private:
+
+            uint32_t num_living_bots();
+
+            void set_actions();
 
             std::vector<BattleBot*> mBots;
     };

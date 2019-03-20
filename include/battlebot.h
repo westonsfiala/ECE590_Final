@@ -17,6 +17,7 @@ namespace bots {
 
             std::string name();
             std::string display();
+            std::string get_battle_stats();
 
             void trigger();
             void react(BattleBot* attacker, json attackData);
@@ -32,25 +33,27 @@ namespace bots {
             virtual uint32_t num_damage_die();
             virtual uint32_t damage_die();
             virtual int32_t damage_modifier();
-            
-            const static std::string sMove;
-            const static std::string sAttack;
-            const static std::string sDeath;
 
         protected:
 
-            void emit(const Event& event);
-
             std::string mName;
 
+            // Raw stats
             int32_t mConstitution;
             int32_t mStrength;
             int32_t mDexterity;
             uint32_t mMovement;
 
+            // Calculated stats
             uint32_t mDamage;
             uint32_t mHealth;
-            uint32_t mAC;
+
+            // Log variables
+            uint32_t mAttacks;
+            uint32_t mHits;
+            uint32_t mDamageDealt;
+            uint32_t mAttacksBlocked;
+            uint32_t mKills;
 
             void move();
             void attack();

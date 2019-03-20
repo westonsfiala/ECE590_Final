@@ -3,6 +3,19 @@
 
 using namespace bots;
 
+
+const char UserInterface::sBeginRed = '[';
+const char UserInterface::sEndRed = ']';
+
+const char UserInterface::sBeginBlue = '(';
+const char UserInterface::sEndBlue = ')';
+
+const char UserInterface::sBeginGreen = '<';
+const char UserInterface::sEndGreen = '>';
+
+const char UserInterface::sBeginMagenta = '{';
+const char UserInterface::sEndMagenta = '}';
+
 UserInterface::UserInterface(BattleRunner& runner) : Process("user input"), mRunner(runner) {
     initscr();   // Start ncurses
     timeout(1);  // Timeout for waiting for user input
@@ -49,5 +62,34 @@ void UserInterface::update()
 
 void UserInterface::print_line(uint32_t row, const std::string& text)
 {
-    mvprintw(row,1,text.c_str());
+    auto charLocation = 1;
+    for(auto letter : text)
+    {
+        if(letter == sBeginRed)
+        {
+            attron(COLOR_PAIR(2));
+        }
+        else if (letter == sBeginBlue)
+        {
+            attron(COLOR_PAIR(5));
+        }
+        else if (letter == sBeginGreen)
+        {
+            attron(COLOR_PAIR(3));
+        }
+        else if (letter == sBeginMagenta)
+        {
+            attron(COLOR_PAIR(6));
+        }
+        else if(letter == sEndRed || letter == sEndBlue || letter == sEndGreen || letter == sEndMagenta)
+        {
+            attron(COLOR_PAIR(8));
+        }
+        else 
+        {
+            char str[2] = {letter, 0};
+            mvprintw(row, charLocation, str);
+            charLocation++;
+        }
+    }
 }

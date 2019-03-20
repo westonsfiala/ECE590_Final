@@ -1,13 +1,9 @@
 #include "battlebot.h"
 
 #include "battle_runner.h"
+#include "user_interface.h"
 
 using namespace bots;
-
-const std::string BattleBot::sMove = "Move";
-const std::string BattleBot::sAttack = "Attack";
-const std::string BattleBot::sDeath = "Death";
-
 
 BattleBot::BattleBot(string botName, BattleRunner& runner) : mName(botName), mRunner(runner) 
 {
@@ -18,6 +14,12 @@ BattleBot::BattleBot(string botName, BattleRunner& runner) : mName(botName), mRu
 
     mHealth = 20;
     mDamage = 6;
+    
+    mAttacks = 0;
+    mHits = 0;
+    mDamageDealt = 0;
+    mAttacksBlocked = 0;
+    mKills = 0;
 }
 
 std::string BattleBot::name() 
@@ -35,13 +37,25 @@ std::string BattleBot::display()
     else
     {
         botDisplay += "Health = [" + std::to_string(mHealth) + "], ";
-        botDisplay += "Attack = 1d20+" + std::to_string(attack_modifier()) + ", ";
-        botDisplay += "Damage = " + std::to_string(num_damage_die()) + "d" + std::to_string(damage_die()) + "+" + std::to_string(damage_modifier()) + ", ";
-        botDisplay += "AC = " + std::to_string(AC());
+        botDisplay += "Attack = <1d20+" + std::to_string(attack_modifier()) + ">, ";
+        botDisplay += "Damage = <" + std::to_string(num_damage_die()) + "d" + std::to_string(damage_die()) + "+" + std::to_string(damage_modifier()) + ">, ";
+        botDisplay += "AC = (" + std::to_string(AC()) + ")";
         // botDisplay += ", Movement = " + std::to_string(movement());
     }
 
     return botDisplay;
+}
+
+std::string BattleBot::get_battle_stats()
+{
+    std::string botStats = name() + ": ";
+
+    botStats += "blocked (" + std::to_string(mAttacksBlocked) + ") attacks, ";
+    botStats += "performed <" + std::to_string(mAttacks) + "> attacks ";
+    botStats += "hitting <" + std::to_string(mHits) + "> times ";
+    botStats += "dealing [" + std::to_string(mDamageDealt) + "] damage and killing [" + std::to_string(mKills) + "] bots.";
+
+    return botStats;
 }
 
 void BattleBot::trigger()
@@ -54,6 +68,7 @@ void BattleBot::react(BattleBot* attacker, json attackData)
 {
     if(attacker == this)
     {
+        mAttacks++;
         return;
     }
 
@@ -66,48 +81,39 @@ void BattleBot::react(BattleBot* attacker, json attackData)
     {
         return;
     }
-
-    // Don't care about attacking ourselves
-    if(attackData["attacker"].get<std::string>() == name())
-    {
-        return;
-    }
     
-    std::string attackLog = attackData["attacker"].get<std::string>() + " attacks with a (" + std::to_string(attackData["attack"].get<uint32_t>()) + ") to hit.";
+    std::string attackLog = attackData["attacker"].get<std::string>() + " attacks " + name() + " with a <" + std::to_string(attackData["attack"].get<uint32_t>()) + ">.";
 
     // Check to see if the attack beat our AC
     if(attackData["attack"].get<uint32_t>() < AC())
     {
-        attackLog += " " + name() + " blocks.";
+        mAttacksBlocked++;
+        attackLog += " " + name() + " (blocks).";
         mRunner.log(attackLog);
     }
     else
     {
         auto damage = attackData["damage"].get<uint32_t>();
 
-        attackLog += " " + name() + " took (" + std::to_string(damage) + ") damage";
+        attackLog += " " + name() + " takes [" + std::to_string(damage) + "] damage.";
+        mRunner.log(attackLog);
+
+        attacker->mHits++;
+        attacker->mDamageDealt += damage;
 
         // They hurt us
         if(mHealth <= damage)
         {
             // We died
             mHealth = 0;
-            attackLog += " and died";
+            mRunner.log(name() + " [dies].");
 
-            json deathData;
-            deathData["killer"] = attackData["attacker"].get<std::string>();
-            deathData["self"] = name();
-
-            mRunner.log(attackLog);
-            emit(Event(BattleState::sBattleEnd, deathData));
+            attacker->mKills++;
         }
         else
         {
             mHealth -= damage;
             
-            attackLog += " reducing health to [" + std::to_string(mHealth) + "]";
-            
-            mRunner.log(attackLog);
         }
     }
 }
@@ -172,8 +178,3 @@ void BattleBot::attack()
 
     mRunner.react_bots(this, attackData);
 }
-
-void BattleBot::emit(const Event& event)
-{ 
-    mRunner.emit(event);
-};

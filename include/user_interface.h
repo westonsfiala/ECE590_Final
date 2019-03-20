@@ -18,6 +18,18 @@ namespace bots {
         void update();
         void stop() {}
 
+        const static char sBeginRed;
+        const static char sEndRed;
+        
+        const static char sBeginBlue;
+        const static char sEndBlue;
+
+        const static char sBeginGreen;
+        const static char sEndGreen;
+
+        const static char sBeginMagenta;
+        const static char sEndMagenta;
+
         private:
 
         void print_line(uint32_t row, const std::string& text);

@@ -6,14 +6,15 @@ using namespace bots;
 
 const std::string BattleState::sBattleEnd = "BattleEnd";
 const Action BattleState::sBattleEndAction = Action("Abort Battle", 'a', sBattleEnd);
+const Action BattleState::sGoToResultsAction = Action("Procede to Results", 'p', sBattleEnd);
 
 BattleState::BattleState() : InteractableState("Battle State") 
 {
-    mActions.push_back(sBattleEndAction);
 }
 
 void BattleState::entry(const Event& e)
 {
+    set_actions();
     battle_runner().log("Entering " + name());
     mBots = battle_runner().get_valid_bots();
     for(auto bot : mBots)
@@ -24,8 +25,12 @@ void BattleState::entry(const Event& e)
 
 void BattleState::during()
 {
-    auto triggerBot = battle_runner().num_updates() % mBots.size();
-    mBots[triggerBot]->trigger();
+    if(num_living_bots() > 1)
+    {
+        auto triggerBot = battle_runner().num_updates() % mBots.size();
+        mBots[triggerBot]->trigger();
+    }
+    set_actions();
 }      
 
 void BattleState::exit(const Event& e)
@@ -64,4 +69,30 @@ std::vector<std::string> BattleState::get_display()
 void BattleState::act_on_key(int keyPress)
 {
     process_key(keyPress);
+}
+
+uint32_t BattleState::num_living_bots()
+{
+    auto living = 0;
+    for(auto bot : mBots)
+    {
+        if(!bot->is_dead())
+        {
+            living++;
+        }
+    }
+    return living;
+}
+
+void BattleState::set_actions()
+{
+    mActions.clear();
+    if(num_living_bots() < 2)
+    {
+        mActions.push_back(sGoToResultsAction);
+    }
+    else
+    {
+        mActions.push_back(sBattleEndAction);
+    }
 }
