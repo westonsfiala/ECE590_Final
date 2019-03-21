@@ -67,6 +67,7 @@ namespace bots
 
             std::vector<std::string> mLog;
             std::fstream mFileLog;
+            std::fstream mVictorFileLog;
     };
 }
 

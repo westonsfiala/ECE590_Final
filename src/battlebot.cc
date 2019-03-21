@@ -20,7 +20,7 @@ void BattleBot::reset()
     mDamageBonus = 0;
 
     mAC = 0;
-    mHealth = 20;
+    mHealth = 50;
     mNumDamageDice = 1;
     mDamageDie = 1;
     

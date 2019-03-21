@@ -5,7 +5,9 @@ using namespace bots;
 const uint32_t BattleRunner::sMaxBots = 2;
 const uint32_t BattleRunner::sMinBots = 2;
 
-BattleRunner::BattleRunner() : StateMachine("runner"), mFileLog("log.txt", mFileLog.trunc | mFileLog.out)
+BattleRunner::BattleRunner() : StateMachine("runner"), 
+mFileLog("log.txt", std::fstream::trunc | std::fstream::out)
+mVictorFileLog("victor.csv", std::fstream::out | std::fstream::app);
 {
     mBots.resize(sMaxBots);
 
@@ -102,16 +104,14 @@ void BattleRunner::victory_log(BattleBot* bot)
 {
     if(bot != nullptr)
     {
-        std::string filename = "victor.log";
-        std::fstream s(filename, std::fstream::out | std::fstream::app);
-        if (s.is_open()) {
+        if (mVictorFileLog.is_open()) {
             auto botConfig = bot->get_config();
             if(botConfig.size() == 4)
             {
-                s << std::to_string(botConfig[0]) << ", " 
-                  << std::to_string(botConfig[1]) << ", " 
-                  << std::to_string(botConfig[2]) << ", " 
-                  << std::to_string(botConfig[3]) << std::endl;
+                mVictorFileLog << std::to_string(botConfig[0]) << ", " 
+                               << std::to_string(botConfig[1]) << ", " 
+                               << std::to_string(botConfig[2]) << ", " 
+                               << std::to_string(botConfig[3]) << std::endl;
             }
         }
     }

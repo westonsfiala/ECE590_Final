@@ -278,32 +278,32 @@ void BuildBotState::apply_bot_frame(BattleBot* bot)
     auto config = mConfiguration[FRAME_SLOT];
     if(config == ULTRA_LIGHT_FRAME_KEY - ASCII_0)
     {
-        bot->mDexterity += 3;
-        bot->mStrength += -1;
-        bot->mConstitution += -1;
+        bot->mDexterity += 4;
+        bot->mStrength += 0;
+        bot->mConstitution += -2;
     }
     else if(config == LIGHT_FRAME_KEY - ASCII_0)
     {
-        bot->mDexterity += 2;
-        bot->mStrength += 0;
-        bot->mConstitution += 0;
+        bot->mDexterity += 3;
+        bot->mStrength += 1;
+        bot->mConstitution += -1;
     }
     else if(config == MEDIUM_FRAME_KEY - ASCII_0)
     {
-        bot->mDexterity += 1;
-        bot->mStrength += 1;
-        bot->mConstitution += 1;
-    }
-    else if(config == HEAVY_FRAME_KEY - ASCII_0)
-    {
-        bot->mDexterity += 0;
+        bot->mDexterity += 2;
         bot->mStrength += 2;
         bot->mConstitution += 0;
     }
+    else if(config == HEAVY_FRAME_KEY - ASCII_0)
+    {
+        bot->mDexterity += 1;
+        bot->mStrength += 3;
+        bot->mConstitution += 1;
+    }
     else if(config == ULTRA_HEAVY_FRAME_KEY - ASCII_0)
     {
-        bot->mDexterity += -2;
-        bot->mStrength += 1;
+        bot->mDexterity += 0;
+        bot->mStrength += 4;
         bot->mConstitution += 2;
     }
 
@@ -315,7 +315,8 @@ void BuildBotState::apply_bot_armor(BattleBot* bot)
     auto config = mConfiguration[ARMOR_SLOT];
     if(config == LIGHT_ARMOR_KEY - ASCII_0)
     {
-        bot->mAC = 11 + bot->mDexterity;
+        bot->mAC = 12 + bot->mDexterity;
+        bot->mAttackBonus += 1;
     }
     else if(config == MEDIUM_ARMOR_KEY - ASCII_0)
     {
@@ -323,7 +324,8 @@ void BuildBotState::apply_bot_armor(BattleBot* bot)
     }
     else if(config == HEAVY_ARMOR_KEY - ASCII_0)
     {
-        bot->mAC = 17;
+        bot->mAC = 16;
+        bot->mAttackBonus += -1;
     }
 }
 
@@ -332,17 +334,17 @@ void BuildBotState::apply_bot_weapon(BattleBot* bot)
     auto config = mConfiguration[WEAPON_SLOT];
     if(config == DAGGER_KEY - ASCII_0)
     {
-        bot->mAttackBonus += 2 + bot->mDexterity;
+        bot->mAttackBonus += bot->mDexterity;
         bot->mDamageBonus += bot->mDexterity;
         bot->mNumDamageDice = 1;
         bot->mDamageDie = 4;
     }
     else if(config == MACE_KEY - ASCII_0)
     {
-        bot->mAttackBonus += 2 + bot->mStrength;
+        bot->mAttackBonus += bot->mStrength;
         bot->mDamageBonus += bot->mStrength;
-        bot->mNumDamageDice = 1;
-        bot->mDamageDie = 6;
+        bot->mNumDamageDice = 2;
+        bot->mDamageDie = 4;
     }
     else if(config == LONGSWORD_KEY - ASCII_0)
     {
