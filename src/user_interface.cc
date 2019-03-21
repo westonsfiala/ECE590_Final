@@ -17,12 +17,7 @@ const char UserInterface::sBeginMagenta = '{';
 const char UserInterface::sEndMagenta = '}';
 
 UserInterface::UserInterface(BattleRunner& runner) : Process("user input"), mRunner(runner) {
-    initscr();   // Start ncurses
-    timeout(1);  // Timeout for waiting for user input
-    noecho();    // Do not echo user input to the screen
-    curs_set(0); // Do not show the cursor
     start_color(); // Start color up.
-
     // Set up a bunch of colors that can be used.
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
     init_pair(2, COLOR_RED, COLOR_BLACK);

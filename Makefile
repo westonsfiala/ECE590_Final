@@ -32,9 +32,10 @@ DGENCONFIG  := docs.config
 HEADERS     := $(wildcard $(INCDIR)/*.h)
 SOURCES     := $(wildcard $(SRCDIR)/*.cc)
 OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
+NON_MAIN_OBJECTS := $(filter-out ./build/main.o,$(OBJECTS))
 
 #Default Make
-all: directories $(TARGETDIR)/$(TARGET) tests
+all: directories $(TARGETDIR)/$(TARGET) bin/test
 
 #Remake
 remake: spotless all
@@ -44,25 +45,26 @@ directories:
 	@mkdir -p $(TARGETDIR)
 	@mkdir -p $(BUILDDIR)
 
-tests:
-	cd test && $(MAKE)
-
 docs: docs/index.html
 
-docs/index.html: $(SOURCES) $(HEADERS) README.md docs.config dox/* examples/*.cc
+docs/index.html: $(SOURCES) $(HEADERS) README.md docs.config 
 	$(DGEN) $(DGENCONFIG)
 	cp .nojekyll docs
 
 #Clean only Objects
 clean:
 	@$(RM) -rf $(BUILDDIR)/*.o
-	cd test && $(MAKE) clean
 
 #Full Clean, Objects and Binaries
 spotless: clean
 	@$(RM) -rf $(TARGETDIR)/$(TARGET) *.db
 	@$(RM) -rf build lib docs/*
-	cd test && $(MAKE) spotless
+	
+
+#Unit Tester
+bin/test: $(NON_MAIN_OBJECTS) $(HEADERS) ./src/unit_test.cc ./src/test_main.cpp
+	$(CC) $(CFLAGS) $(INC) -c -o test_main.o ./src/test_main.cpp
+	$(CC) $(CFLAGS) -o bin/test test_main.o $(NON_MAIN_OBJECTS) $(LIB)
 
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
