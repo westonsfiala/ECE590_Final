@@ -29,6 +29,7 @@ namespace bots
 
             std::string get_state_title();
             std::vector<std::string> get_action_strings();
+            std::vector<int32_t> get_action_keys();
             std::vector<std::string> get_display();
 
             std::vector<std::string> get_recent_log(uint32_t logs);

@@ -18,6 +18,7 @@ namespace bots {
             InteractableState(std::string name);
 
             std::vector<std::string> get_action_strings();
+            std::vector<int32_t> get_action_keys();
 
             virtual std::string title() = 0;
             virtual std::vector<std::string> get_display() = 0;

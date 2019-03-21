@@ -39,3 +39,4 @@ html/
 latex/
 docs.config
 doxygen_sqlite3.db
+.vscode/ipch

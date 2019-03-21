@@ -46,6 +46,11 @@ std::vector<std::string> BattleRunner::get_action_strings()
     return current_interactable().get_action_strings();
 }
 
+std::vector<int32_t> BattleRunner::get_action_keys()
+{
+    return current_interactable().get_action_keys();
+}
+
 std::vector<std::string> BattleRunner::get_display()
 {
     return current_interactable().get_display();
