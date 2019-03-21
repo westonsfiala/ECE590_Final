@@ -1,0 +1,8 @@
+opened log
+Entering Start State
+Entering Prepare State
+Entering Build a Bot State
+Entering Prepare State
+Entering Build a Bot State
+Entering Prepare State
+Entering Start State

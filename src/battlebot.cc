@@ -7,6 +7,11 @@ using namespace bots;
 
 BattleBot::BattleBot(string botName, BattleRunner& runner) : mName(botName), mRunner(runner) 
 {
+    reset();
+}
+
+void BattleBot::reset()
+{
     mConstitution = 0;
     mStrength = 0;
     mDexterity = 0;

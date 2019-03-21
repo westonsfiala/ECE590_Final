@@ -15,6 +15,7 @@ namespace bots {
 
             BattleBot(string name, BattleRunner& runner);
 
+            void reset();
             std::string name();
             std::string display();
             std::string get_battle_stats();
@@ -27,12 +28,12 @@ namespace bots {
             void start_battle();
             void end_battle();
 
-            virtual uint32_t movement();
-            virtual uint32_t AC();
-            virtual int32_t attack_modifier();
-            virtual uint32_t num_damage_die();
-            virtual uint32_t damage_die();
-            virtual int32_t damage_modifier();
+            uint32_t movement();
+            uint32_t AC();
+            int32_t attack_modifier();
+            uint32_t num_damage_die();
+            uint32_t damage_die();
+            int32_t damage_modifier();
 
         protected:
 

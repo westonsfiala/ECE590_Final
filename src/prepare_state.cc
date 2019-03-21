@@ -55,7 +55,8 @@ void PrepareState::act_on_key(int keyPress)
     {
         if(battle_runner().get_bot(botKey) == nullptr)
         {
-            battle_runner().create_bot(botKey);
+            emit(Event(sCreateBot, botKey));
+            return;
         }
         else
         {

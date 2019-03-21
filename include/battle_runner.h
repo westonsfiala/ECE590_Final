@@ -13,6 +13,7 @@
 #include "prepare_state.h"
 #include "battle_state.h"
 #include "results_state.h"
+#include "build_bot_state.h"
 
 using namespace elma;
 
@@ -54,6 +55,7 @@ namespace bots
             PrepareState mPrepareState;
             BattleState mBattleState;
             ResultsState mResultsState;
+            BuildBotState mBuildBotState;
 
             std::vector<BattleBot*> mBots;
 

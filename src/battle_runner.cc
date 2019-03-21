@@ -13,7 +13,9 @@ BattleRunner::BattleRunner() : StateMachine("runner"), mFileLog("log.txt", mFile
     set_initial(mStartState);
     add_transition(StartState::sPrepareForBattle, mStartState, mPrepareState);
     add_transition(PrepareState::sRestart, mPrepareState, mStartState);
+    add_transition(PrepareState::sCreateBot, mPrepareState, mBuildBotState);
     add_transition(PrepareState::sBattleBegin, mPrepareState, mBattleState);
+    add_transition(BuildBotState::sReturnToPrepare, mBuildBotState, mPrepareState);
     add_transition(BattleState::sBattleEnd, mBattleState, mResultsState);
     add_transition(ResultsState::sRestart, mResultsState, mStartState);
 
@@ -123,7 +125,6 @@ void BattleRunner::create_bot(uint32_t botId)
 {
     if(botId >= 0 && botId < mBots.size())
     {
-        log("creating Bot:");
         destroy_bot(botId);
         auto botname = "Bot" + std::to_string(botId + 1);
         auto newbot = new BattleBot(botname, *this);
