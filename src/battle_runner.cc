@@ -6,8 +6,8 @@ const uint32_t BattleRunner::sMaxBots = 2;
 const uint32_t BattleRunner::sMinBots = 2;
 
 BattleRunner::BattleRunner() : StateMachine("runner"), 
-mFileLog("log.txt", std::fstream::trunc | std::fstream::out)
-mVictorFileLog("victor.csv", std::fstream::out | std::fstream::app);
+mFileLog("log.txt", std::fstream::trunc | std::fstream::out),
+mVictorFileLog("victor.csv", std::fstream::out | std::fstream::app)
 {
     mBots.resize(sMaxBots);
 
