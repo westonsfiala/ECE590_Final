@@ -68,6 +68,11 @@ const std::vector<std::string>& BattleRunner::get_full_log()
     return mLog;
 }
 
+void BattleRunner::act_on_key(int32_t key)
+{
+    current_interactable().act_on_key(key);
+}
+
 int32_t BattleRunner::roll(uint32_t numDice, uint32_t dice, int32_t modifier)
 {
     std::uniform_int_distribution<uint32_t> dist(1, dice);

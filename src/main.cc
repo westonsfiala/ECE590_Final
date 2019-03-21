@@ -27,8 +27,8 @@ int main()
 
     // Schedule all of the tasks.
     m.schedule(ui, 10ms)
-     .schedule(runner, 1s)
      .schedule(keys, 10ms)
+     .schedule(runner, 1s)
      .init()
      .run();
 

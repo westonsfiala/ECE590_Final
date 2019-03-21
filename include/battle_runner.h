@@ -34,6 +34,8 @@ namespace bots
             std::vector<std::string> get_recent_log(uint32_t logs);
             const std::vector<std::string>& get_full_log();
 
+            void act_on_key(int32_t key); 
+
             int32_t roll(uint32_t numDice, uint32_t dice, int32_t modifier);
 
             void log(const std::string& text);

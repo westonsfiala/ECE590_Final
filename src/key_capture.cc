@@ -25,21 +25,9 @@ void KeyCapture::update() {
     // If no character is ready, getch() returns ERR.
     int capture = getch();
 
-    process_key(capture);
-}
-
-void KeyCapture::fake_press(int32_t key)
-{
-    process_key(key);
-}
-
-void KeyCapture::process_key(int32_t key)
-{
-    auto& currentState = mRunner.current_interactable();
-
-    if(key != ERR)
+    if(capture != ERR)
     {
-        currentState.act_on_key(key);
+        mRunner.act_on_key(capture);
     }
 }
 

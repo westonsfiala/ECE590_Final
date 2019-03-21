@@ -21,14 +21,10 @@ namespace bots {
             void update();
             void stop() {}
 
-            void fake_press(int32_t key);
-
             const static std::string sKeyPressEvent;
             const static std::string sKeyPressKey;
 
         private:
-
-            void process_key(int32_t key);
 
             BattleRunner& mRunner;
     };
