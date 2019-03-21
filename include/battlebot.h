@@ -8,9 +8,11 @@ using namespace elma;
 namespace bots {
 
     class BattleRunner;
+    class BuildBotState;
 
     class BattleBot
     {
+        friend class BuildBotState;
         public:
 
             BattleBot(string name, BattleRunner& runner);
@@ -24,9 +26,6 @@ namespace bots {
             void react(BattleBot* attacker, json attackData);
 
             bool is_dead();
-
-            void start_battle();
-            void end_battle();
 
             uint32_t movement();
             uint32_t AC();
@@ -44,10 +43,14 @@ namespace bots {
             int32_t mStrength;
             int32_t mDexterity;
             uint32_t mMovement;
+            int32_t mAttackBonus;
+            int32_t mDamageBonus;
 
             // Calculated stats
-            uint32_t mDamage;
+            uint32_t mNumDamageDice;
+            uint32_t mDamageDie;
             uint32_t mHealth;
+            uint32_t mAC;
 
             // Log variables
             uint32_t mAttacks;
@@ -56,10 +59,10 @@ namespace bots {
             uint32_t mAttacksBlocked;
             uint32_t mKills;
 
+            BattleRunner& mRunner;
+
             void move();
             void attack();
-
-            BattleRunner& mRunner;
     };
 }
 

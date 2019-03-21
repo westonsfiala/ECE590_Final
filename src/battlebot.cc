@@ -16,9 +16,13 @@ void BattleBot::reset()
     mStrength = 0;
     mDexterity = 0;
     mMovement = 6;
+    mAttackBonus = 2;
+    mDamageBonus = 0;
 
+    mAC = 0;
     mHealth = 20;
-    mDamage = 6;
+    mNumDamageDice = 1;
+    mDamageDie = 1;
     
     mAttacks = 0;
     mHits = 0;
@@ -128,19 +132,9 @@ bool BattleBot::is_dead()
     return mHealth == 0;
 }
 
-void BattleBot::start_battle() 
-{
-
-}
-
-void BattleBot::end_battle() 
-{
-
-}
-
 uint32_t BattleBot::AC() 
 { 
-    return 10 + mDexterity; 
+    return mAC; 
 }
 
 uint32_t BattleBot::movement()
@@ -150,22 +144,22 @@ uint32_t BattleBot::movement()
 
 int32_t BattleBot::attack_modifier()
 {
-    return mStrength + 2;
+    return mAttackBonus;
 }
 
 uint32_t BattleBot::num_damage_die()
 {
-    return 1;
+    return mNumDamageDice;
 }
 
 uint32_t BattleBot::damage_die()
 {
-    return mDamage;
+    return mDamageDie;
 }
 
 int32_t BattleBot::damage_modifier()
 {
-    return mStrength;
+    return mDamageBonus;
 }
 
 void BattleBot::move()

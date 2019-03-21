@@ -121,15 +121,22 @@ std::vector<BattleBot*> BattleRunner::get_valid_bots()
     return validBots;
 }
 
-void BattleRunner::create_bot(uint32_t botId)
+void BattleRunner::create_bot(uint32_t botId, BattleBot* newBot)
 {
+    if(newBot == nullptr)
+    {
+        return;
+    }
+
     if(botId >= 0 && botId < mBots.size())
     {
         destroy_bot(botId);
-        auto botname = "Bot" + std::to_string(botId + 1);
-        auto newbot = new BattleBot(botname, *this);
-        mBots[botId] = newbot;
+        mBots[botId] = newBot;
         log("Created Bot: " + mBots[botId]->name());
+    }
+    else 
+    {
+        delete newBot;
     }
 }
 

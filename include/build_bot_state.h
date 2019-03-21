@@ -32,6 +32,9 @@ namespace bots {
 
             const static uint32_t sDenyBuildKey;
             const static Action sDenyBuildAction;
+            
+            const static uint32_t sLastBuildStepKey;
+            const static Action sLastBuildStepAction;
 
         private:
 
@@ -48,6 +51,12 @@ namespace bots {
             uint32_t mBotId;
             std::vector<int32_t> mConfiguration;
             BattleBot mTempBot;
+
+            void apply_bot_config(BattleBot* bot);
+            void apply_bot_frame(BattleBot* bot);
+            void apply_bot_armor(BattleBot* bot);
+            void apply_bot_weapon(BattleBot* bot);
+            void apply_bot_specialty(BattleBot* bot);
 
             void reset_configuration();
             void build_bot_from_configuration();

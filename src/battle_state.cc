@@ -17,10 +17,6 @@ void BattleState::entry(const Event& e)
     set_actions();
     battle_runner().log("Entering " + name());
     mBots = battle_runner().get_valid_bots();
-    for(auto bot : mBots)
-    {
-        bot->start_battle();
-    }
 }
 
 void BattleState::during()
@@ -35,10 +31,6 @@ void BattleState::during()
 
 void BattleState::exit(const Event& e)
 {
-    for(auto& bot : mBots)
-    {
-        bot->end_battle();
-    }
     mBots.clear();
 }
 
