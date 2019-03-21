@@ -2,22 +2,3 @@ opened log
 Entering Start State
 Entering Prepare State
 Entering Build a Bot State
-Created Bot: Bot1
-Entering Prepare State
-Entering Build a Bot State
-Created Bot: Bot2
-Entering Prepare State
-Entering Battle State
-Bot1 attacks Bot2 with a <6>. Bot2 (blocks).
-Bot2 attacks Bot1 with a <11>. Bot1 (blocks).
-Bot1 attacks Bot2 with a <10>. Bot2 (blocks).
-Bot2 attacks Bot1 with a <20>. Bot1 takes [5] damage.
-Bot1 attacks Bot2 with a <17>. Bot2 takes [8] damage.
-Bot2 attacks Bot1 with a <21>. Bot1 takes [3] damage.
-Bot1 attacks Bot2 with a <18>. Bot2 takes [12] damage.
-Bot2 attacks Bot1 with a <16>. Bot1 takes [7] damage.
-Bot1 [dies].
-Entering Results State
-Entering Start State
-Destroying Bot: Bot1
-Destroying Bot: Bot2

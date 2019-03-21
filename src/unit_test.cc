@@ -5,6 +5,7 @@
 
 #include "elma/elma.h"
 #include "battle_runner.h"
+#include "user_interface.h"
 #include "key_capture.h"
 
 using namespace elma;
@@ -20,12 +21,14 @@ TEST(runner, one_run)
 
     BattleRunner runner;
     bots::KeyCapture keys(runner);
+    UserInterface ui(runner);
 
-    // // Schedule all of the tasks.
-    // m.schedule(runner, 10ms)
-    //  .schedule(keys, 10ms)
-    //  .init()
-    //  .run();
+    // Schedule all of the tasks.
+    m.schedule(runner, 10ms)
+     .schedule(keys, 10ms)
+     .schedule(ui, 10ms)
+     .init()
+     .run(10s);
 
     endwin(); 
 }
