@@ -177,32 +177,32 @@ TEST(runner, run_ten_thousand_battles)
     EXPECT_NO_THROW(m.run());
 }
 
-// TEST(runner, pressRandomAllowed)
-// {
-//     Manager m;
-//     BattleRunner runner;
-//     RandomKeyPresser rPresser(runner, true, 100000);
+TEST(runner, pressRandomAllowed)
+{
+    Manager m;
+    BattleRunner runner;
+    RandomKeyPresser rPresser(runner, true, 100000);
 
-//     // Schedule all of the tasks.
-//     m.schedule(rPresser, 10ms)
-//      .schedule(runner, 10ms)
-//      .init()
-//      .use_simulated_time();
+    // Schedule all of the tasks.
+    m.schedule(rPresser, 10ms)
+     .schedule(runner, 10ms)
+     .init()
+     .use_simulated_time();
 
-//     EXPECT_NO_THROW(m.run());
-// }
+    EXPECT_NO_THROW(m.run());
+}
 
-// TEST(runner, pressRandom)
-// {
-//     Manager m;
-//     BattleRunner runner;
-//     RandomKeyPresser rPresser(runner, false, 100000);
+TEST(runner, pressRandom)
+{
+    Manager m;
+    BattleRunner runner;
+    RandomKeyPresser rPresser(runner, false, 100000);
 
-//     // Schedule all of the tasks.
-//     m.schedule(rPresser, 10ms)
-//      .schedule(runner, 10ms)
-//      .init()
-//      .use_simulated_time();
+    // Schedule all of the tasks.
+    m.schedule(rPresser, 10ms)
+     .schedule(runner, 10ms)
+     .init()
+     .use_simulated_time();
 
-//     EXPECT_NO_THROW(m.run());
-// }
+    EXPECT_NO_THROW(m.run());
+}

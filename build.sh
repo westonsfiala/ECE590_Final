@@ -16,6 +16,6 @@ make all
 # cp /usr/local/src/elma/test/bin/test copiedTests/
 # ./copiedTests/test
 
-# ./bin/ECE590_Final
-./bin/test
+./bin/ECE590_Final
+# ./bin/test
 
