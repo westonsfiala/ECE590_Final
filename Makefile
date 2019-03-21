@@ -63,8 +63,8 @@ spotless: clean
 
 #Unit Tester
 bin/test: $(NON_MAIN_OBJECTS) $(HEADERS) ./src/unit_test.cc ./src/test_main.cpp
-	$(CC) $(CFLAGS) $(INC) -c -o test_main.o ./src/test_main.cpp
-	$(CC) $(CFLAGS) -o bin/test test_main.o $(NON_MAIN_OBJECTS) $(LIB)
+	$(CC) $(CFLAGS) $(INC) -c -o build/test_main.o ./src/test_main.cpp
+	$(CC) $(CFLAGS) -o bin/test build/test_main.o $(NON_MAIN_OBJECTS) $(LIB)
 
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
