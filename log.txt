@@ -8,14 +8,22 @@ Entering Build a Bot State
 Created Bot: Bot2
 Entering Prepare State
 Entering Battle State
-Bot2 attacks Bot1 with a <18>. Bot1 takes [5] damage.
-Bot1 attacks Bot2 with a <24>. Bot2 takes [7] damage.
-Bot2 attacks Bot1 with a <16>. Bot1 takes [2] damage.
-Bot1 attacks Bot2 with a <22>. Bot2 takes [5] damage.
-Bot2 attacks Bot1 with a <13>. Bot1 (blocks).
-Bot1 attacks Bot2 with a <24>. Bot2 takes [7] damage.
-Bot2 attacks Bot1 with a <13>. Bot1 (blocks).
-Bot1 attacks Bot2 with a <20>. Bot2 takes [7] damage.
+Bot2 attacks Bot1 with a <11>. Bot1 (blocks).
+Bot1 attacks Bot2 with a <16>. Bot2 takes [2] damage.
+Bot2 attacks Bot1 with a <8>. Bot1 (blocks).
+Bot1 attacks Bot2 with a <9>. Bot2 (blocks).
+Bot2 attacks Bot1 with a <23>. Bot1 takes [6] damage.
+Bot1 attacks Bot2 with a <23>. Bot2 takes [4] damage.
+Bot2 attacks Bot1 with a <23>. Bot1 takes [3] damage.
+Bot1 attacks Bot2 with a <26>. Bot2 takes [3] damage.
+Bot2 attacks Bot1 with a <11>. Bot1 (blocks).
+Bot1 attacks Bot2 with a <8>. Bot2 (blocks).
+Bot2 attacks Bot1 with a <20>. Bot1 takes [3] damage.
+Bot1 attacks Bot2 with a <19>. Bot2 takes [4] damage.
+Bot2 attacks Bot1 with a <16>. Bot1 takes [4] damage.
+Bot1 attacks Bot2 with a <18>. Bot2 takes [3] damage.
+Bot2 attacks Bot1 with a <15>. Bot1 takes [6] damage.
+Bot1 attacks Bot2 with a <26>. Bot2 takes [4] damage.
 Bot2 [dies].
 Entering Results State
 Entering Start State

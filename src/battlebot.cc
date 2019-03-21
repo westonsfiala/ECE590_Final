@@ -29,6 +29,7 @@ void BattleBot::reset()
     mDamageDealt = 0;
     mAttacksBlocked = 0;
     mKills = 0;
+    mConfig = {-1, -1, -1, -1};
 }
 
 std::string BattleBot::name() 
@@ -160,6 +161,11 @@ uint32_t BattleBot::damage_die()
 int32_t BattleBot::damage_modifier()
 {
     return mDamageBonus;
+}
+
+std::vector<int32_t> BattleBot::get_config()
+{
+    return mConfig;
 }
 
 void BattleBot::move()

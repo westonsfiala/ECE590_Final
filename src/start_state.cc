@@ -21,7 +21,6 @@ StartState::StartState() : InteractableState("Start State")
 void StartState::entry(const Event& e)
 {
     battle_runner().log("Entering " + name());
-    //battle_runner().clear_log();
     battle_runner().destroy_all_bots();
 }
 

@@ -7,6 +7,9 @@ using namespace bots;
 const std::string BuildBotState::sReturnToPrepare = "ReturnToPrepare";
 const Action BuildBotState::sReturnToPrepareAction = Action("Return to prepare", 'r', sReturnToPrepare);
 
+const uint32_t BuildBotState::sRandomBotKey = 'x';
+const Action BuildBotState::sRandomBotAction = Action("Random Bot!", sRandomBotKey, sReturnToPrepare);
+
 const uint32_t BuildBotState::sAcceptBuildKey = 'y';
 const Action BuildBotState::sAcceptBuildAction = Action("Accept build?", sAcceptBuildKey, sReturnToPrepare);
 
@@ -196,6 +199,15 @@ void BuildBotState::act_on_key(int keyPress)
         }
     }
 
+    if(keyPress == sRandomBotKey)
+    {
+        mConfiguration[FRAME_SLOT] = battle_runner().roll(1,ULTRA_HEAVY_FRAME_KEY - ASCII_0, 0);
+        mConfiguration[ARMOR_SLOT] = battle_runner().roll(1,HEAVY_ARMOR_KEY - ASCII_0, 0);
+        mConfiguration[WEAPON_SLOT] = battle_runner().roll(1,GREATSWORD_KEY - ASCII_0, 0);
+        mConfiguration[SPECIALTY_SLOT] = battle_runner().roll(1,BRUTAL_BLOWS_KEY - ASCII_0, 0);
+        build_bot_from_configuration();
+    }
+
     set_actions();
     apply_bot_config(&mTempBot);
 
@@ -207,6 +219,7 @@ void BuildBotState::set_actions()
     mActions.clear();
 
     mActions.push_back(sReturnToPrepareAction);
+    mActions.push_back(sRandomBotAction);
 
     if(mCurrentSeleciton == FRAME)
     {
@@ -252,6 +265,7 @@ void BuildBotState::apply_bot_config(BattleBot* bot)
     if(bot != nullptr)
     {
         bot->reset();
+        bot->mConfig = mConfiguration;
         apply_bot_frame(bot);
         apply_bot_armor(bot);
         apply_bot_weapon(bot);

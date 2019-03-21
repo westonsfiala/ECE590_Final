@@ -37,6 +37,7 @@ namespace bots
             int32_t roll(uint32_t numDice, uint32_t dice, int32_t modifier);
 
             void log(const std::string& text);
+            void victory_log(BattleBot* bot);
             void clear_log();
             BattleBot* get_bot(uint32_t botId);
             uint32_t get_num_bots();

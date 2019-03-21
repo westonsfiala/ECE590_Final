@@ -27,6 +27,9 @@ namespace bots {
             const static std::string sReturnToPrepare;
             const static Action sReturnToPrepareAction;
             
+            const static uint32_t sRandomBotKey;
+            const static Action sRandomBotAction;
+            
             const static uint32_t sAcceptBuildKey;
             const static Action sAcceptBuildAction;
 

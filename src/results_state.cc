@@ -25,6 +25,7 @@ void ResultsState::entry(const Event& e)
     if(victor != nullptr)
     {
         mDisplay.push_back("{" + victor->name() + " is the victor! Congrats! }");
+        battle_runner().victory_log(victor);
     }
     else
     {

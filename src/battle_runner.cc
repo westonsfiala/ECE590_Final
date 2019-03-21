@@ -88,6 +88,25 @@ void BattleRunner::log(const std::string& text)
     }
 }
 
+void BattleRunner::victory_log(BattleBot* bot)
+{
+    if(bot != nullptr)
+    {
+        std::string filename = "victor.log";
+        std::fstream s(filename, std::fstream::out | std::fstream::app);
+        if (s.is_open()) {
+            auto botConfig = bot->get_config();
+            if(botConfig.size() == 4)
+            {
+                s << std::to_string(botConfig[0]) << ", " 
+                  << std::to_string(botConfig[1]) << ", " 
+                  << std::to_string(botConfig[2]) << ", " 
+                  << std::to_string(botConfig[3]) << std::endl;
+            }
+        }
+    }
+}
+
 void BattleRunner::clear_log()
 {
     mLog.clear();

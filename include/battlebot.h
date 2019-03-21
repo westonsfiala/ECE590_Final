@@ -34,6 +34,8 @@ namespace bots {
             uint32_t damage_die();
             int32_t damage_modifier();
 
+            std::vector<int32_t> get_config();
+
         protected:
 
             std::string mName;
@@ -58,6 +60,8 @@ namespace bots {
             uint32_t mDamageDealt;
             uint32_t mAttacksBlocked;
             uint32_t mKills;
+
+            std::vector<int32_t> mConfig;
 
             BattleRunner& mRunner;
 
