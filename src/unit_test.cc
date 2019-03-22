@@ -150,7 +150,7 @@ TEST(runner, run_one_battle)
     EXPECT_NO_THROW(m.run());
 }
 
-TEST(runner, run_10000_battles)
+TEST(runner, run_30000_battles)
 {
     Manager m;
     BattleRunner runner;
@@ -167,7 +167,7 @@ TEST(runner, run_10000_battles)
         'p', // Procede to results
         'r' // Return to start
     }, 
-    10000);
+    30000);
 
     // Schedule all of the tasks.
     m.schedule(rTester, 10ms)

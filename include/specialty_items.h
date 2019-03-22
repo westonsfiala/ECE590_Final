@@ -34,7 +34,7 @@ namespace bots {
             int32_t damage_die_modifier() { return 0; }
             int32_t num_attacks_modifier() { return 0; }
             int32_t attack_modifier() { return 0; }
-            int32_t damage_modifier() { return 1; }
+            int32_t damage_modifier() { return 2; }
     };
 
     class SureStrikeSpecialty : public SpecialtyItem
@@ -85,10 +85,10 @@ namespace bots {
             int32_t dexterity_modifier() { return 0; }
             int32_t AC_modifier() { return 0; }
             int32_t num_damage_dice_modifier() { return 0; }
-            int32_t damage_die_modifier() { return 0; }
+            int32_t damage_die_modifier() { return -1; }
             int32_t num_attacks_modifier() { return 1; }
-            int32_t attack_modifier() { return -2; }
-            int32_t damage_modifier() { return -1; }
+            int32_t attack_modifier() { return -3; }
+            int32_t damage_modifier() { return 0; }
     };
 
     class LargeBuildSpecialty : public SpecialtyItem

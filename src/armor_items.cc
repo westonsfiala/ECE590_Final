@@ -3,20 +3,9 @@
 
 using namespace bots;
 
-int32_t UnarmoredArmor::AC_modifier()
-{
-    auto rawBonus = 0;
-    if(mAttachedBot != nullptr)
-    {
-        rawBonus += mAttachedBot->dexterity();
-    }
-
-    return 0;
-}
-
 int32_t ChainArmor::AC_modifier()
 {
-    auto rawBonus = 4;
+    auto rawBonus = 5;
     if(mAttachedBot != nullptr)
     {
         auto maxBonus = 2;
@@ -31,7 +20,7 @@ int32_t ChainArmor::AC_modifier()
 
 int32_t PlateArmor::AC_modifier()
 {
-    auto rawBonus = 6;
+    auto rawBonus = 8;
     if(mAttachedBot != nullptr)
     {
         rawBonus -= mAttachedBot->dexterity();
