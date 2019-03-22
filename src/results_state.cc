@@ -9,7 +9,6 @@ const Action ResultsState::sRestartAction = Action("Return to Start", 'r', sRest
 ResultsState::ResultsState() : InteractableState("Results State") 
 {
     mActions.push_back(sRestartAction);
-
 }
 
 void ResultsState::entry(const Event& e)
@@ -38,16 +37,6 @@ void ResultsState::entry(const Event& e)
     {
         mDisplay.push_back(bot->get_battle_stats());
     }
-}
-
-void ResultsState::during()
-{
-
-}      
-
-void ResultsState::exit(const Event& e)
-{
-
 }
 
 std::string ResultsState::title()

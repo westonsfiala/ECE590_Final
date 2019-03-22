@@ -26,16 +26,6 @@ void PrepareState::entry(const Event& e)
     set_actions();
 }
 
-void PrepareState::during()
-{
-
-}      
-
-void PrepareState::exit(const Event& e)
-{
-
-}
-
 std::string PrepareState::title()
 {
     auto title = std::string("Welcome to the ") + name();
@@ -45,6 +35,10 @@ std::string PrepareState::title()
 std::vector<std::string> PrepareState::get_display()
 {
     std::vector<std::string> display;
+
+    display.push_back("Prepare bots by selection the actions above.");
+    display.push_back("All created bots will be displayed below.");
+    display.push_back("");
     auto bots = battle_runner().get_valid_bots();
     for(auto bot : bots)
     {
