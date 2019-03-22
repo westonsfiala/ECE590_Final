@@ -7,14 +7,7 @@
 
 using namespace bots;
 
-const std::string KeyCapture::sKeyPressEvent = "KeyPress";
-const std::string KeyCapture::sKeyPressKey = "Key";
-
 KeyCapture::KeyCapture(BattleRunner& runner) : Process("key capture"), mRunner(runner) 
-{
-};
-
-KeyCapture::~KeyCapture() 
 {
 };
 
