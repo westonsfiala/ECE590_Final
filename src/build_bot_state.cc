@@ -25,10 +25,6 @@ BuildBotState::BuildBotState() : InteractableState("Build a Bot State"), mTempBo
 {
 }
 
-BuildBotState::~BuildBotState()
-{
-}
-
 void BuildBotState::entry(const Event& e)
 {
     battle_runner().log("Entering " + name());
@@ -38,15 +34,6 @@ void BuildBotState::entry(const Event& e)
     build_actions();
     set_actions();
 }
-
-void BuildBotState::during()
-{
-
-}      
-
-void BuildBotState::exit(const Event& e)
-{
-
 }
 
 std::string BuildBotState::title()
