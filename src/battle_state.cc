@@ -50,7 +50,7 @@ std::vector<std::string> BattleState::get_display()
     }
     
     battleDisplay.push_back("");
-    for(const auto& battleLog : battle_runner().get_recent_log(mBots.size() * 2))
+    for(const auto& battleLog : battle_runner().get_recent_log(10))
     {
         battleDisplay.push_back(battleLog);
     }
