@@ -148,11 +148,27 @@ void BattleBot::react(BattleBot* attacker, json attackData)
     {
         return;
     }
+
+    bool criticalHit = attackData["critical hit"].get<bool>();
+    bool criticalMiss = attackData["critical miss"].get<bool>();
     
-    std::string attackLog = attackData["attacker"].get<std::string>() + " attacks " + name() + " with a <" + std::to_string(attackData["attack"].get<int32_t>()) + ">.";
+    std::string attackLog = attackData["attacker"].get<std::string>();
+    
+    if(criticalMiss)
+    {
+        attackLog += " (critically misses) automatically failing the attack.";
+    }
+    else if (criticalHit)
+    {
+        attackLog += " [critically hits] dealing additional damage.";
+    }
+    else
+    {
+        attackLog += " attacks " + name() + " with a {" + std::to_string(attackData["attack"].get<int32_t>()) + "}.";
+    }
 
     // Check to see if the attack beat our AC
-    if(attackData["attack"].get<int32_t>() < AC())
+    if((attackData["attack"].get<int32_t>() < AC() && !criticalHit) || criticalMiss)
     {
         mAttacksBlocked++;
         attackLog += " " + name() + " (blocks).";
@@ -160,7 +176,7 @@ void BattleBot::react(BattleBot* attacker, json attackData)
     }
     else
     {
-        auto damage = std::max<int32_t>(attackData["damage"].get<int32_t>(),0);
+        auto damage = std::max<int32_t>(attackData["damage"].get<int32_t>(),1);
 
         attackLog += " " + name() + " takes [" + std::to_string(damage) + "] damage.";
         mRunner.log(attackLog);
@@ -217,7 +233,7 @@ int32_t BattleBot::dexterity()
 
 int32_t BattleBot::AC()
 {
-    auto value = 10;
+    auto value = 10 + dexterity();
     value += mFrame->AC_modifier();
     value += mArmor->AC_modifier();
     value += mWeapon->AC_modifier();
@@ -402,8 +418,25 @@ void BattleBot::attack()
     for(auto i = 0; i < num_attacks(); ++i)
     {
         attackData["attacker"] = name();
-        attackData["attack"] = mRunner.roll(1, 20, attack_modifier());
-        attackData["damage"] = mRunner.roll(num_damage_die(), damage_die(), damage_modifier());
+        
+        auto roll = mRunner.roll(1, 20, attack_modifier());
+        auto diceToRoll = num_damage_die();
+
+        attackData["critical miss"] = false;
+        attackData["critical hit"] = false;
+        if(roll == 1+attack_modifier())
+        {
+            attackData["critical miss"] = true;
+            diceToRoll = 0;
+        }
+        else if(roll == 20+attack_modifier())
+        {
+            attackData["critical hit"] = true;
+            diceToRoll *= 2;
+        }
+
+        attackData["attack"] = roll;
+        attackData["damage"] = mRunner.roll(diceToRoll, damage_die(), damage_modifier());
 
         mRunner.react_bots(this, attackData);
     }

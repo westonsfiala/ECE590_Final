@@ -161,10 +161,10 @@ void BuildBotState::act_on_key(int keyPress)
 
     if(keyPress == sRandomBotKey && mCurrentSeleciton != DONE)
     {
-        mTempBot.set_frame(battle_runner().roll(0, mTempBot.get_num_frames()-1, 0));
-        mTempBot.set_armor(battle_runner().roll(0, mTempBot.get_num_armors()-1, 0));
-        mTempBot.set_weapon(battle_runner().roll(0, mTempBot.get_num_weapons()-1, 0));
-        mTempBot.set_specialty(battle_runner().roll(0, mTempBot.get_num_specialties()-1, 0));
+        mTempBot.set_frame(battle_runner().roll(1, mTempBot.get_num_frames(), -1));
+        mTempBot.set_armor(battle_runner().roll(1, mTempBot.get_num_armors(), -1));
+        mTempBot.set_weapon(battle_runner().roll(1, mTempBot.get_num_weapons(), -1));
+        mTempBot.set_specialty(battle_runner().roll(1, mTempBot.get_num_specialties(), -1));
         build_bot_from_configuration();
     }
 

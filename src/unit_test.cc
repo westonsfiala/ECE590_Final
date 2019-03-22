@@ -150,10 +150,11 @@ TEST(runner, run_one_battle)
     EXPECT_NO_THROW(m.run());
 }
 
-TEST(runner, run_ten_thousand_battles)
+TEST(runner, run_10000_battles)
 {
     Manager m;
     BattleRunner runner;
+    runner.disable_log();
 
     RunnerTester rTester(runner, 
     {

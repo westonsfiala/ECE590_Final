@@ -44,7 +44,13 @@ std::string PrepareState::title()
 
 std::vector<std::string> PrepareState::get_display()
 {
-    return {};
+    std::vector<std::string> display;
+    auto bots = battle_runner().get_valid_bots();
+    for(auto bot : bots)
+    {
+        display.push_back(bot->get_simple_loadout());
+    }
+    return display;
 }
 
 void PrepareState::act_on_key(int keyPress)

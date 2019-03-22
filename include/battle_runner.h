@@ -42,6 +42,9 @@ namespace bots
             void log(const std::string& text);
             void victory_log(BattleBot* bot);
             void clear_log();
+            void disable_log();
+            void enable_log();
+
             BattleBot* get_bot(uint32_t botId);
             uint32_t get_num_bots();
             std::vector<BattleBot*> get_valid_bots();
@@ -68,6 +71,7 @@ namespace bots
             std::vector<std::string> mLog;
             std::fstream mFileLog;
             std::fstream mVictorFileLog;
+            bool mLoggingEnabled;
     };
 }
 

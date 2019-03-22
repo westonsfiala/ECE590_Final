@@ -21,6 +21,7 @@ mVictorFileLog("victor.csv", std::fstream::out | std::fstream::app)
     add_transition(BattleState::sBattleEnd, mBattleState, mResultsState);
     add_transition(ResultsState::sRestart, mResultsState, mStartState);
 
+    mLoggingEnabled = true;
     if (!mFileLog.is_open()) {
         log("failed to open log");
     } else {
@@ -93,10 +94,13 @@ int32_t BattleRunner::roll(uint32_t numDice, uint32_t dice, int32_t modifier)
 
 void BattleRunner::log(const std::string& text)
 {
-    mLog.push_back(text);
-    if(mFileLog.is_open())
+    if(mLoggingEnabled)
     {
-        mFileLog << text << std::endl;
+        mLog.push_back(text);
+        if(mFileLog.is_open())
+        {
+            mFileLog << text << std::endl;
+        }
     }
 }
 
@@ -109,9 +113,9 @@ void BattleRunner::victory_log(BattleBot* bot)
             if(botConfig.size() == 4)
             {
                 mVictorFileLog << std::to_string(botConfig[0]) << ", " 
-                               << std::to_string(botConfig[1]) << ", " 
-                               << std::to_string(botConfig[2]) << ", " 
-                               << std::to_string(botConfig[3]) << std::endl;
+                            << std::to_string(botConfig[1]) << ", " 
+                            << std::to_string(botConfig[2]) << ", " 
+                            << std::to_string(botConfig[3]) << std::endl;
             }
         }
     }
@@ -120,6 +124,16 @@ void BattleRunner::victory_log(BattleBot* bot)
 void BattleRunner::clear_log()
 {
     mLog.clear();
+}
+
+void BattleRunner::disable_log()
+{
+    mLoggingEnabled = false;
+}
+
+void BattleRunner::enable_log()
+{
+    mLoggingEnabled = true;
 }
 
 BattleBot* BattleRunner::get_bot(uint32_t botId) 
