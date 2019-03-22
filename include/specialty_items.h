@@ -7,6 +7,8 @@ namespace bots {
 
     class BattleBot;
 
+    //! Items that fill the specialty slot of a battle bot.
+    //! Specialty items tend give simple changes to a variety of stats
     class SpecialtyItem : public BattleBotItem
     {
         public:
@@ -19,6 +21,7 @@ namespace bots {
             {};
     };
 
+    //! Specialty item that gives a simple bonus to damage.
     class SavageBlowsSpecialty : public SpecialtyItem
     {
         public:
@@ -37,6 +40,7 @@ namespace bots {
             int32_t damage_modifier() { return 2; }
     };
 
+    //! Specialty item that gives a simple bonus to attack.
     class SureStrikeSpecialty : public SpecialtyItem
     {
         public:
@@ -55,6 +59,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Specialty item that gives a simple bonus to AC.
     class GuardedStanceSpecialty : public SpecialtyItem
     {
         public:
@@ -73,6 +78,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Specialty item that lets you attack an extra time, but all attacks are less likely to hit.
     class MultiAttackSpecialty : public SpecialtyItem
     {
         public:
@@ -91,6 +97,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Specialty item that gives a simple bonus to constitution.
     class LargeBuildSpecialty : public SpecialtyItem
     {
         public:

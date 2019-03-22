@@ -7,6 +7,8 @@ namespace bots {
 
     class BattleBot;
 
+    //! Items that fill the weapon slot of a battle bot.
+    //! Weapon items tend to modify attack and damage stats most.
     class WeaponItem : public BattleBotItem
     {
         public:
@@ -19,6 +21,7 @@ namespace bots {
             {};
     };
 
+    //! Weapon that relies upon multiple small attacks to deal damage. Uses Dexterity.
     class TwinDaggersWeapon : public WeaponItem
     {
         public:
@@ -37,6 +40,7 @@ namespace bots {
             int32_t damage_modifier();
     };
 
+    //! Weapon that relies upon high accuracy attacks to consistently damage. Uses Dexterity.
     class RapierWeapon : public WeaponItem
     {
         public:
@@ -55,6 +59,7 @@ namespace bots {
             int32_t damage_modifier();
     };
 
+    //! Weapon that deals small damage, but gives a bonus to AC. Uses higher of Dexterity and Strength.
     class SwordAndShieldWeapon : public WeaponItem
     {
         public:
@@ -73,6 +78,7 @@ namespace bots {
             int32_t damage_modifier();
     };
 
+    //! Weapon that deals consistent high damage and hits often. Uses Strength.
     class WarhammerWeapon : public WeaponItem
     {
         public:
@@ -91,6 +97,7 @@ namespace bots {
             int32_t damage_modifier();
     };
 
+    //! Weapon that deals variable high damage with a bonus to damage. Uses Strength.
     class GreataxeWeapon : public WeaponItem
     {
         public:

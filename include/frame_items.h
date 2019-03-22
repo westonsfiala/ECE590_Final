@@ -7,6 +7,8 @@ namespace bots {
 
     class BattleBot;
 
+    //! Items that fill the frame slot of a battle bot.
+    //! Frame items tend to modify base stats most, constitution, dexterity, and strength.
     class FrameItem : public BattleBotItem
     {
         public:
@@ -19,6 +21,7 @@ namespace bots {
             {};
     };
 
+    //! Frame item that disregards survivablity for increased damage.
     class GlassCannonFrame : public FrameItem
     {
         public:
@@ -27,8 +30,8 @@ namespace bots {
             {};
 
             int32_t constitution_modifier() { return -3; }
-            int32_t strength_modifier() { return 1; }
-            int32_t dexterity_modifier() { return 1; }
+            int32_t strength_modifier() { return 0; }
+            int32_t dexterity_modifier() { return 0; }
             int32_t AC_modifier() { return -1; }
             int32_t num_damage_dice_modifier() { return 1; }
             int32_t damage_die_modifier() { return 2; }
@@ -37,6 +40,7 @@ namespace bots {
             int32_t damage_modifier() { return 1; }
     };
 
+    //! Frame item that increases dexterity, but reduces strength.
     class FlowingFrame : public FrameItem
     {
         public:
@@ -55,6 +59,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Frame item that slightly increases constitution, dexterity, and strength.
     class StandardFrame : public FrameItem
     {
         public:
@@ -73,6 +78,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Frame item that increases strength and constitution, but reduces dexterity.
     class BullishFrame : public FrameItem
     {
         public:
@@ -91,6 +97,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Frame item that increases constitution and AC.
     class DurableFrame : public FrameItem
     {
         public:
