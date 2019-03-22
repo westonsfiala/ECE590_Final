@@ -48,7 +48,7 @@ std::vector<std::string> PrepareState::get_display()
     auto bots = battle_runner().get_valid_bots();
     for(auto bot : bots)
     {
-        display.push_back(bot->get_simple_loadout());
+        display.push_back(bot->name() + ": " + bot->get_simple_loadout());
     }
     return display;
 }

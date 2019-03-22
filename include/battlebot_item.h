@@ -18,7 +18,7 @@ namespace bots {
             {};
 
             inline std::string name() { return mName; }
-            inline std::string description() { return mName; }
+            inline std::string description() { return mDescription; }
             inline void set_battlebot(BattleBot* bot) { mAttachedBot = bot; } 
             std::string stat_display();
 

@@ -7,6 +7,8 @@ namespace bots {
 
     class BattleBot;
 
+    //! Items that fill the armor slot of a battle bot.
+    //! Armor items tend to modify AC over other stats.
     class ArmorItem : public BattleBotItem
     {
         public:
@@ -19,6 +21,7 @@ namespace bots {
             {};
     };
 
+    //! Armor that sacrifices AC gain in favor of more damage.
     class UnarmoredArmor : public ArmorItem
     {
         public:
@@ -37,6 +40,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Armor that gives a small AC gain while making attacking slighty better.
     class LeatherArmor : public ArmorItem
     {
         public:
@@ -55,6 +59,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Armor that gives good raw AC, but only gains a small amount from dexterity.
     class ChainArmor : public ArmorItem
     {
         public:
@@ -73,6 +78,7 @@ namespace bots {
             int32_t damage_modifier() { return 0; }
     };
 
+    //! Armor that gives great raw AC, but gains none from dexterity. Makes attacking slightly harder.
     class PlateArmor : public ArmorItem
     {
         public:
@@ -91,6 +97,7 @@ namespace bots {
             int32_t damage_modifier() { return -1; }
     };
 
+    //! Armor that gives SK raw AC, but only gains a small amount from dexterity. Gives a small damage bonus.
     class SpikedArmor : public ArmorItem
     {
         public:

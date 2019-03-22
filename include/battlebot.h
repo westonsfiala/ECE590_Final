@@ -75,20 +75,17 @@ namespace bots {
             uint32_t mAttacksBlocked;
             uint32_t mKills;
 
-            FrameItem* mFrame;
-            ArmorItem* mArmor;
-            WeaponItem* mWeapon;
-            SpecialtyItem* mSpecialty;
+            BattleBotItem* mFrame;
+            BattleBotItem* mArmor;
+            BattleBotItem* mWeapon;
+            BattleBotItem* mSpecialty;
 
-            FrameItem mEmptyFrame;
-            ArmorItem mEmptyArmor;
-            WeaponItem mEmptyWeapon;
-            SpecialtyItem mEmptySpecialty;
+            BattleBotItem mEmptyItem;
             
-            std::vector<FrameItem*> mFrames;
-            std::vector<ArmorItem*> mArmors;
-            std::vector<WeaponItem*> mWeapons;
-            std::vector<SpecialtyItem*> mSpecialties;
+            std::vector<BattleBotItem*> mFrames;
+            std::vector<BattleBotItem*> mArmors;
+            std::vector<BattleBotItem*> mWeapons;
+            std::vector<BattleBotItem*> mSpecialties;
 
             std::vector<int32_t> mConfig;
 
@@ -96,19 +93,15 @@ namespace bots {
 
             void calculate_health();
             void attack();
+            
+            std::vector<Action> get_item_actions(int32_t key_base, std::vector<BattleBotItem*>& items);
 
             void destroy_items();
-            void destroy_frame();
-            void destroy_armor();
-            void destroy_weapon();
-            void destroy_specialty();
+            void destroy_items_helper(std::vector<BattleBotItem*>& items);
 
             void fill_empty_items();
             void init_items();
-            void init_frame_items();
-            void init_armor_items();
-            void init_weapon_items();
-            void init_specialty_items();
+            void init_items_helper(std::vector<BattleBotItem*>& items);
     };
 }
 

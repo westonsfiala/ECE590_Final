@@ -243,7 +243,7 @@ int32_t BattleBot::AC()
 
 int32_t BattleBot::num_damage_die()
 {
-    auto value = 0;
+    auto value = 1;
     value += mFrame->num_damage_dice_modifier();
     value += mArmor->num_damage_dice_modifier();
     value += mWeapon->num_damage_dice_modifier();
@@ -295,7 +295,7 @@ void BattleBot::set_frame(int32_t id)
 {
     if(id < 0 || id >= mFrames.size())
     {
-        mFrame = &mEmptyFrame;
+        mFrame = &mEmptyItem;
         mConfig[0] = -1;
     }
     else
@@ -310,7 +310,7 @@ void BattleBot::set_armor(int32_t id)
 {
     if(id < 0 || id >= mArmors.size())
     {
-        mArmor = &mEmptyArmor;
+        mArmor = &mEmptyItem;
         mConfig[1] = -1;
     }
     else
@@ -325,7 +325,7 @@ void BattleBot::set_weapon(int32_t id)
 {
     if(id < 0 || id >= mWeapons.size())
     {
-        mWeapon = &mEmptyWeapon;
+        mWeapon = &mEmptyItem;
         mConfig[2] = -1;
     }
     else
@@ -340,7 +340,7 @@ void BattleBot::set_specialty(int32_t id)
 {
     if(id < 0 || id >= mSpecialties.size())
     {
-        mSpecialty = &mEmptySpecialty;
+        mSpecialty = &mEmptyItem;
         mConfig[3] = -1;
     }
     else
@@ -353,54 +353,22 @@ void BattleBot::set_specialty(int32_t id)
 
 std::vector<Action> BattleBot::get_frame_actions(int32_t key_base)
 {
-    std::vector<Action> actions;
-    auto iter = 0;
-    for(auto item : mFrames)
-    {
-        auto newAction = Action(item->name(), key_base + iter, item->description());
-        actions.push_back(newAction);
-        iter++;
-    }
-    return actions;
+    return get_item_actions(key_base, mFrames);
 }
 
 std::vector<Action> BattleBot::get_armor_actions(int32_t key_base)
 {
-    std::vector<Action> actions;
-    auto iter = 0;
-    for(auto item : mArmors)
-    {
-        auto newAction = Action(item->name(), key_base + iter, item->description());
-        actions.push_back(newAction);
-        iter++;
-    }
-    return actions;
+    return get_item_actions(key_base, mArmors);
 }
 
 std::vector<Action> BattleBot::get_weapon_actions(int32_t key_base)
 {
-    std::vector<Action> actions;
-    auto iter = 0;
-    for(auto item : mWeapons)
-    {
-        auto newAction = Action(item->name(), key_base + iter, item->description());
-        actions.push_back(newAction);
-        iter++;
-    }
-    return actions;
+    return get_item_actions(key_base, mWeapons);
 }
 
 std::vector<Action> BattleBot::get_specialty_actions(int32_t key_base)
 {
-    std::vector<Action> actions;
-    auto iter = 0;
-    for(auto item : mSpecialties)
-    {
-        auto newAction = Action(item->name(), key_base + iter, item->description());
-        actions.push_back(newAction);
-        iter++;
-    }
-    return actions;
+    return get_item_actions(key_base, mSpecialties);
 }
 
 void BattleBot::match_configuration(BattleBot& other)
@@ -409,6 +377,15 @@ void BattleBot::match_configuration(BattleBot& other)
     set_armor(other.mConfig[1]);
     set_weapon(other.mConfig[2]);
     set_specialty(other.mConfig[3]);
+}
+
+void BattleBot::calculate_health()
+{
+    // Unless they are all initialized, don't touch them.
+    if(mFrame != nullptr && mArmor != nullptr && mWeapon != nullptr && mSpecialty != nullptr)
+    {
+        mHealth = 50 + constitution() * 5;
+    }
 }
 
 void BattleBot::attack()
@@ -442,50 +419,30 @@ void BattleBot::attack()
     }
 }
 
-void BattleBot::calculate_health()
+std::vector<Action> BattleBot::get_item_actions(int32_t key_base, std::vector<BattleBotItem*>& items)
 {
-    // Unless they are all initialized, don't touch them.
-    if(mFrame != nullptr && mArmor != nullptr && mWeapon != nullptr && mSpecialty != nullptr)
+    std::vector<Action> actions;
+    auto iter = 0;
+    for(auto item : items)
     {
-        mHealth = 50 + constitution() * 5;
+        auto newAction = Action(item->name() + ": " + item->description() , key_base + iter, "");
+        actions.push_back(newAction);
+        iter++;
     }
+    return actions;
 }
 
 void BattleBot::destroy_items()
 {
-    destroy_frame();
-    destroy_armor();
-    destroy_weapon();
-    destroy_specialty();
+    destroy_items_helper(mFrames);
+    destroy_items_helper(mArmors);
+    destroy_items_helper(mWeapons);
+    destroy_items_helper(mSpecialties);
 }
 
-void BattleBot::destroy_frame()
+void BattleBot::destroy_items_helper(std::vector<BattleBotItem*>& items)
 {
-    for(auto itemptr : mFrames)
-    {
-        delete itemptr;
-    }
-}
-
-void BattleBot::destroy_armor()
-{
-    for(auto itemptr : mArmors)
-    {
-        delete itemptr;
-    }
-}
-
-void BattleBot::destroy_weapon()
-{
-    for(auto itemptr : mWeapons)
-    {
-        delete itemptr;
-    }
-}
-
-void BattleBot::destroy_specialty()
-{
-    for(auto itemptr : mSpecialties)
+    for(auto itemptr : items)
     {
         delete itemptr;
     }
@@ -502,44 +459,17 @@ void BattleBot::fill_empty_items()
 
 void BattleBot::init_items()
 {
-    init_frame_items();
-    init_armor_items();
-    init_weapon_items();
-    init_specialty_items();
+    init_items_helper(mFrames);
+    init_items_helper(mArmors);
+    init_items_helper(mWeapons);
+    init_items_helper(mSpecialties);
 }
 
-void BattleBot::init_frame_items()
+void BattleBot::init_items_helper(std::vector<BattleBotItem*>& items)
 {
-    for(auto item : mFrames)
+    for(auto item : items)
     {
         item->set_battlebot(this);
     }
     set_frame(-1);
-}
-
-void BattleBot::init_armor_items()
-{
-    for(auto item : mArmors)
-    {
-        item->set_battlebot(this);
-    }
-    set_armor(-1);
-}
-
-void BattleBot::init_weapon_items()
-{
-    for(auto item : mWeapons)
-    {
-        item->set_battlebot(this);
-    }
-    set_weapon(-1);
-}
-
-void BattleBot::init_specialty_items()
-{
-    for(auto item : mSpecialties)
-    {
-        item->set_battlebot(this);
-    }
-    set_specialty(-1);
 }
