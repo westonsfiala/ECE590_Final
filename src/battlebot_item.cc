@@ -14,7 +14,7 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Constitution " + plus + std::to_string(mod) + " ";
+        changes += "[Constitution]" + plus + std::to_string(mod) + " ";
     }
 
     mod = strength_modifier();
@@ -22,7 +22,7 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Strength " + plus + std::to_string(mod) + " ";
+        changes += "{Strength}" + plus + std::to_string(mod) + " ";
     }
 
     mod = dexterity_modifier();
@@ -30,7 +30,7 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Dexterity " + plus + std::to_string(mod) + " ";
+        changes += "{Dexterity}" + plus + std::to_string(mod) + " ";
     }
 
     mod = AC_modifier();
@@ -38,7 +38,15 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Armor Class(AC) " + plus + std::to_string(mod) + " ";
+        changes += "(AC)" + plus + std::to_string(mod) + " ";
+    }
+
+    mod = num_attacks_modifier();
+    if(mod != 0)
+    {
+        std::string plus = (mod > 0) ? "+" : "";
+
+        changes += "{Number of Attacks}" + plus + std::to_string(mod) + " ";
     }
 
     mod = num_damage_dice_modifier();
@@ -46,7 +54,7 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Damage Dice " + plus + std::to_string(mod) + " ";
+        changes += "<Damage Dice>" + plus + std::to_string(mod) + " ";
     }
 
     mod = damage_die_modifier();
@@ -54,7 +62,7 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Damage Die " + plus + std::to_string(mod) + " ";
+        changes += "<Damage Die>" + plus + std::to_string(mod) + " ";
     }
 
     mod = attack_modifier();
@@ -62,7 +70,7 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Attack Modifier " + plus + std::to_string(mod) + " ";
+        changes += "{Attack Modifier}" + plus + std::to_string(mod) + " ";
     }
 
     mod = damage_modifier();
@@ -70,9 +78,8 @@ std::string BattleBotItem::stat_display()
     {
         std::string plus = (mod > 0) ? "+" : "";
 
-        changes += "Damage Modifier " + plus + std::to_string(mod) + " ";
+        changes += "<Damage Modifier>" + plus + std::to_string(mod) + " ";
     }
-
 
     return changes;
 }

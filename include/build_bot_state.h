@@ -15,6 +15,7 @@ namespace bots {
     {
         public:
             BuildBotState();
+            ~BuildBotState();
 
             void entry(const Event& e);
             void during();
@@ -52,14 +53,15 @@ namespace bots {
 
             partsSelection mCurrentSeleciton;
             uint32_t mBotId;
-            std::vector<int32_t> mConfiguration;
+
             BattleBot mTempBot;
 
-            void apply_bot_config(BattleBot* bot);
-            void apply_bot_frame(BattleBot* bot);
-            void apply_bot_armor(BattleBot* bot);
-            void apply_bot_weapon(BattleBot* bot);
-            void apply_bot_specialty(BattleBot* bot);
+            void build_actions();
+
+            std::vector<Action> mFrameActions;
+            std::vector<Action> mArmorActions;
+            std::vector<Action> mWeaponActions;
+            std::vector<Action> mSpecialtyActions;
 
             void reset_configuration();
             void build_bot_from_configuration();
