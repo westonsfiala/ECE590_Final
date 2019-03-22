@@ -1,0 +1,4 @@
+<map id="bots::UnarmoredArmor" name="bots::UnarmoredArmor">
+<area shape="rect" id="node2" href="$classbots_1_1ArmorItem.html" title="Items that fill the armor slot of a battle bot. " alt="" coords="27,80,154,107"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="17,5,164,32"/>
+</map>

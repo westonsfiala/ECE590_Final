@@ -1,0 +1,8 @@
+<map id="bots::SpecialtyItem" name="bots::SpecialtyItem">
+<area shape="rect" id="node3" href="$classbots_1_1GuardedStanceSpecialty.html" title="Specialty item that gives a simple bonus to AC. " alt="" coords="393,5,609,32"/>
+<area shape="rect" id="node4" href="$classbots_1_1LargeBuildSpecialty.html" title="Specialty item that gives a simple bonus to constitution. " alt="" coords="410,56,593,83"/>
+<area shape="rect" id="node5" href="$classbots_1_1MultiAttackSpecialty.html" title="Specialty item that lets you attack an extra time, but all attacks are less likely to hit..." alt="" coords="408,107,595,133"/>
+<area shape="rect" id="node6" href="$classbots_1_1SavageBlowsSpecialty.html" title="Specialty item that gives a simple bonus to damage. " alt="" coords="401,157,601,184"/>
+<area shape="rect" id="node7" href="$classbots_1_1SureStrikeSpecialty.html" title="Specialty item that gives a simple bonus to attack. " alt="" coords="410,208,593,235"/>
+<area shape="rect" id="node2" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="5,107,152,133"/>
+</map>

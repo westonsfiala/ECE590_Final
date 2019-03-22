@@ -1,0 +1,4 @@
+<map id="bots::SavageBlowsSpecialty" name="bots::SavageBlowsSpecialty">
+<area shape="rect" id="node2" href="$classbots_1_1SpecialtyItem.html" title="Items that fill the specialty slot of a battle bot. " alt="" coords="33,80,178,107"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="32,5,179,32"/>
+</map>

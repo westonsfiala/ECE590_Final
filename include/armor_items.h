@@ -8,7 +8,6 @@ namespace bots {
     class BattleBot;
 
     //! Items that fill the armor slot of a battle bot.
-    //! Armor items tend to modify AC most.
     class ArmorItem : public BattleBotItem
     {
         public:

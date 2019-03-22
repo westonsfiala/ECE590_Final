@@ -8,6 +8,7 @@ namespace bots {
     class BattleBot;
 
     //! Items that fill the specialty slot of a battle bot.
+    
     //! Specialty items tend give simple changes to a variety of stats
     class SpecialtyItem : public BattleBotItem
     {

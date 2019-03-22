@@ -1,0 +1,5 @@
+<map id="bots::WeaponItem" name="bots::WeaponItem">
+<area shape="rect" id="node2" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="45,81,191,108"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBot.html" title="Class for defining a battler in the simulator. " alt="" coords="173,229,292,256"/>
+<area shape="rect" id="node4" href="$classbots_1_1BattleRunner.html" title="Class that controls the entire battle simulation. " alt="" coords="291,81,431,108"/>
+</map>

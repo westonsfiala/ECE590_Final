@@ -6,6 +6,10 @@ This repo is for my final project in ECE590. The goal for this project is to cre
 
 This project will be a success when a user is able to create their own battle bot and compete with it against other battle bots. This project will involve integration with the [ELMA](https://github.com/klavinslab/elma) manager, but will otherwise be coded from scratch in C++.
 
+## Playing the game
+
+To play the game, have docker installed on your machine and clone this repo. Open a console and navigate to the directory you cloned to. Use either the run.ps1 powershell script, or run.sh script. Either will get the game up and running. Follow the prompts on the screen to play the game. Have Fun!
+
 ## Milestones
 
 1. Modify ELMA to run in simulated time instead of realtime. Allows for faster testing.
@@ -36,4 +40,14 @@ This project will be a success when a user is able to create their own battle bo
     * See src & include directories
 1. Started looking at [ncurses](https://invisible-island.net/ncurses/man/ncurses.3x.html) documentation for how to do gui.
 
-No changes to milestones are needed at this time.
+### 3/22/2019
+
+Milestone updates and changes that occured while coding.
+
+1. Simulated time works and has been tested in unit tests. (Completed)
+1. Base classes have been created. There is 1 `BattleRunner`, 5 `states`, 1 `BattleBot`, and 4 `BattleBotItem` types. (Completed)
+1. 2D map was considered, but deemed too difficult to complete in the time frame alloted. (Not Completed)
+1. A battle state that shows the bots stats and a log of all their actions has been created and works. (Completed)
+1. Used the ncurses library to get keys that are pressed by the user and acted on by the battle runner. (Completed)
+1. Documentation has been created and is up to date. (Completed)
+1. Project has been completed on time. (Completed)

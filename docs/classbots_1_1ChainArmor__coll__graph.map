@@ -1,0 +1,6 @@
+<map id="bots::ChainArmor" name="bots::ChainArmor">
+<area shape="rect" id="node2" href="$classbots_1_1ArmorItem.html" title="Items that fill the armor slot of a battle bot. " alt="" coords="9,229,136,256"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="43,81,190,108"/>
+<area shape="rect" id="node4" href="$classbots_1_1BattleBot.html" title="Class for defining a battler in the simulator. " alt="" coords="172,229,291,256"/>
+<area shape="rect" id="node5" href="$classbots_1_1BattleRunner.html" title="Class that controls the entire battle simulation. " alt="" coords="289,81,429,108"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="bots::SpikedArmor" name="bots::SpikedArmor">
+<area shape="rect" id="node2" href="$classbots_1_1ArmorItem.html" title="Items that fill the armor slot of a battle bot. " alt="" coords="13,229,139,256"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="47,81,193,108"/>
+<area shape="rect" id="node4" href="$classbots_1_1BattleBot.html" title="Class for defining a battler in the simulator. " alt="" coords="175,229,294,256"/>
+<area shape="rect" id="node5" href="$classbots_1_1BattleRunner.html" title="Class that controls the entire battle simulation. " alt="" coords="293,81,433,108"/>
+</map>

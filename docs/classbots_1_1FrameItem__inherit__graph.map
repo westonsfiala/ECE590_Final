@@ -1,0 +1,8 @@
+<map id="bots::FrameItem" name="bots::FrameItem">
+<area shape="rect" id="node3" href="$classbots_1_1BullishFrame.html" title="Frame item that increases strength and constitution, but reduces dexterity. " alt="" coords="397,5,535,32"/>
+<area shape="rect" id="node4" href="$classbots_1_1DurableFrame.html" title="Frame item that increases constitution and AC. " alt="" coords="392,56,540,83"/>
+<area shape="rect" id="node5" href="$classbots_1_1FlowingFrame.html" title="Frame item that increases dexterity, but reduces strength. " alt="" coords="394,107,538,133"/>
+<area shape="rect" id="node6" href="$classbots_1_1GlassCannonFrame.html" title="Frame item that disregards survivablity for increased damage. " alt="" coords="375,157,557,184"/>
+<area shape="rect" id="node7" href="$classbots_1_1StandardFrame.html" title="Frame item that slightly increases constitution, dexterity, and strength. " alt="" coords="387,208,545,235"/>
+<area shape="rect" id="node2" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="5,107,152,133"/>
+</map>

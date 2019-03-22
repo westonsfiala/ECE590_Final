@@ -8,6 +8,7 @@ namespace bots {
     class BattleBot;
 
     //! Items that can be added to a battle bot to modify its stats.
+    
     //! There are four varieties: Frame, Armor, Weapon, and Specialty.
     class BattleBotItem
     {

@@ -10,6 +10,7 @@ using namespace elma;
 namespace bots {
 
     //! State that the Battle Runner starts in. 
+    
     //! Displays a welcome message telling the user what the battle bot simulator is.
     class StartState : public InteractableState
     {

@@ -8,6 +8,7 @@ using namespace elma;
 namespace bots {
 
     //! Generates a user interface that is displayed to the screen.
+    
     //! UI has three main sections: Title, Actions, and Display.
     //! Title is displayed in Cyan.
     //! Actions are displayed in Yellow. Every action that the user can take, one per line.

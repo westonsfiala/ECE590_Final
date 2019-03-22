@@ -1,0 +1,4 @@
+<map id="bots::RapierWeapon" name="bots::RapierWeapon">
+<area shape="rect" id="node2" href="$classbots_1_1WeaponItem.html" title="Items that fill the weapon slot of a battle bot. " alt="" coords="11,80,148,107"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="6,5,153,32"/>
+</map>

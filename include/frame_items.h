@@ -8,6 +8,7 @@ namespace bots {
     class BattleBot;
 
     //! Items that fill the frame slot of a battle bot.
+    
     //! Frame items tend to modify base stats most, constitution, dexterity, and strength.
     class FrameItem : public BattleBotItem
     {

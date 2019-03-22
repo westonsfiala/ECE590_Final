@@ -1,0 +1,5 @@
+<map id="bots::SpecialtyItem" name="bots::SpecialtyItem">
+<area shape="rect" id="node2" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="49,81,195,108"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBot.html" title="Class for defining a battler in the simulator. " alt="" coords="177,229,296,256"/>
+<area shape="rect" id="node4" href="$classbots_1_1BattleRunner.html" title="Class that controls the entire battle simulation. " alt="" coords="295,81,435,108"/>
+</map>

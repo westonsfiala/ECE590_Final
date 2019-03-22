@@ -1,0 +1,6 @@
+<map id="bots::GlassCannonFrame" name="bots::GlassCannonFrame">
+<area shape="rect" id="node2" href="$classbots_1_1FrameItem.html" title="Items that fill the frame slot of a battle bot. " alt="" coords="33,229,160,256"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="67,81,214,108"/>
+<area shape="rect" id="node4" href="$classbots_1_1BattleBot.html" title="Class for defining a battler in the simulator. " alt="" coords="196,229,315,256"/>
+<area shape="rect" id="node5" href="$classbots_1_1BattleRunner.html" title="Class that controls the entire battle simulation. " alt="" coords="313,81,453,108"/>
+</map>

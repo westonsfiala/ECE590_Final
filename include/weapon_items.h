@@ -8,6 +8,7 @@ namespace bots {
     class BattleBot;
 
     //! Items that fill the weapon slot of a battle bot.
+    
     //! Weapon items tend to modify attack and damage stats most.
     class WeaponItem : public BattleBotItem
     {

@@ -1,0 +1,8 @@
+<map id="bots::ArmorItem" name="bots::ArmorItem">
+<area shape="rect" id="node3" href="$classbots_1_1ChainArmor.html" title="Armor that gives good raw AC, but only gains a small amount from dexterity. " alt="" coords="393,5,527,32"/>
+<area shape="rect" id="node4" href="$classbots_1_1LeatherArmor.html" title="Armor that gives a small AC gain while making attacking slighty better. " alt="" coords="387,56,533,83"/>
+<area shape="rect" id="node5" href="$classbots_1_1PlateArmor.html" title="Armor that gives great raw AC, but gains none from dexterity. Makes attacking slightly harder..." alt="" coords="395,107,525,133"/>
+<area shape="rect" id="node6" href="$classbots_1_1SpikedArmor.html" title="Armor that gives SK raw AC, but only gains a small amount from dexterity. Gives a small damage bonus..." alt="" coords="389,157,531,184"/>
+<area shape="rect" id="node7" href="$classbots_1_1UnarmoredArmor.html" title="Armor that sacrifices AC gain in favor of more damage. " alt="" coords="375,208,545,235"/>
+<area shape="rect" id="node2" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="5,107,152,133"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="bots::WeaponItem" name="bots::WeaponItem">
+<area shape="rect" id="node3" href="$classbots_1_1GreataxeWeapon.html" title="Weapon that deals variable high damage with a bonus to damage. Uses Strength. " alt="" coords="407,5,574,32"/>
+<area shape="rect" id="node4" href="$classbots_1_1RapierWeapon.html" title="Weapon that relies upon high accuracy attacks to consistently damage. Uses Dexterity. " alt="" coords="417,56,565,83"/>
+<area shape="rect" id="node5" href="$classbots_1_1SwordAndShieldWeapon.html" title="Weapon that deals small damage, but gives a bonus to AC. Uses higher of Dexterity and Strength..." alt="" coords="385,107,596,133"/>
+<area shape="rect" id="node6" href="$classbots_1_1TwinDaggersWeapon.html" title="Weapon that relies upon multiple small attacks to deal damage. Uses Dexterity. " alt="" coords="397,157,584,184"/>
+<area shape="rect" id="node7" href="$classbots_1_1WarhammerWeapon.html" title="Weapon that deals consistent high damage and hits often. Uses Strength. " alt="" coords="397,208,584,235"/>
+<area shape="rect" id="node2" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="5,107,152,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="bots::BuildBotState" name="bots::BuildBotState">
+<area shape="rect" id="node2" href="$classbots_1_1InteractableState.html" title="State class with the extention of adding titles, displays, and ability to act on keys. " alt="" coords="5,81,175,108"/>
+<area shape="rect" id="node4" href="$classbots_1_1Action.html" title="A class for defining actions that the user can take. " alt="" coords="199,81,298,108"/>
+</map>

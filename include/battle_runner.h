@@ -20,6 +20,7 @@ using namespace elma;
 namespace bots
 {
     //! Class that controls the entire battle simulation.
+    
     //! Is built of different states that talk to the battle runner to work.
     class BattleRunner : public StateMachine
     {

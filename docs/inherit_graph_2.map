@@ -1,0 +1,27 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="5,487,152,513"/>
+<area shape="rect" id="node2" href="$classbots_1_1ArmorItem.html" title="Items that fill the armor slot of a battle bot. " alt="" coords="209,132,336,159"/>
+<area shape="rect" id="node8" href="$classbots_1_1FrameItem.html" title="Items that fill the frame slot of a battle bot. " alt="" coords="209,385,336,412"/>
+<area shape="rect" id="node14" href="$classbots_1_1SpecialtyItem.html" title="Items that fill the specialty slot of a battle bot. " alt="" coords="200,588,345,615"/>
+<area shape="rect" id="node20" href="$classbots_1_1WeaponItem.html" title="Items that fill the weapon slot of a battle bot. " alt="" coords="204,841,341,868"/>
+<area shape="rect" id="node3" href="$classbots_1_1ChainArmor.html" title="Armor that gives good raw AC, but only gains a small amount from dexterity. " alt="" coords="434,5,569,32"/>
+<area shape="rect" id="node4" href="$classbots_1_1LeatherArmor.html" title="Armor that gives a small AC gain while making attacking slighty better. " alt="" coords="428,56,575,83"/>
+<area shape="rect" id="node5" href="$classbots_1_1PlateArmor.html" title="Armor that gives great raw AC, but gains none from dexterity. Makes attacking slightly harder..." alt="" coords="436,107,567,133"/>
+<area shape="rect" id="node6" href="$classbots_1_1SpikedArmor.html" title="Armor that gives SK raw AC, but only gains a small amount from dexterity. Gives a small damage bonus..." alt="" coords="431,157,572,184"/>
+<area shape="rect" id="node7" href="$classbots_1_1UnarmoredArmor.html" title="Armor that sacrifices AC gain in favor of more damage. " alt="" coords="416,208,587,235"/>
+<area shape="rect" id="node9" href="$classbots_1_1BullishFrame.html" title="Frame item that increases strength and constitution, but reduces dexterity. " alt="" coords="432,259,571,285"/>
+<area shape="rect" id="node10" href="$classbots_1_1DurableFrame.html" title="Frame item that increases constitution and AC. " alt="" coords="427,309,575,336"/>
+<area shape="rect" id="node11" href="$classbots_1_1FlowingFrame.html" title="Frame item that increases dexterity, but reduces strength. " alt="" coords="429,360,573,387"/>
+<area shape="rect" id="node12" href="$classbots_1_1GlassCannonFrame.html" title="Frame item that disregards survivablity for increased damage. " alt="" coords="410,411,593,437"/>
+<area shape="rect" id="node13" href="$classbots_1_1StandardFrame.html" title="Frame item that slightly increases constitution, dexterity, and strength. " alt="" coords="423,461,580,488"/>
+<area shape="rect" id="node15" href="$classbots_1_1GuardedStanceSpecialty.html" title="Specialty item that gives a simple bonus to AC. " alt="" coords="393,512,609,539"/>
+<area shape="rect" id="node16" href="$classbots_1_1LargeBuildSpecialty.html" title="Specialty item that gives a simple bonus to constitution. " alt="" coords="410,563,593,589"/>
+<area shape="rect" id="node17" href="$classbots_1_1MultiAttackSpecialty.html" title="Specialty item that lets you attack an extra time, but all attacks are less likely to hit..." alt="" coords="408,613,595,640"/>
+<area shape="rect" id="node18" href="$classbots_1_1SavageBlowsSpecialty.html" title="Specialty item that gives a simple bonus to damage. " alt="" coords="401,664,601,691"/>
+<area shape="rect" id="node19" href="$classbots_1_1SureStrikeSpecialty.html" title="Specialty item that gives a simple bonus to attack. " alt="" coords="410,715,593,741"/>
+<area shape="rect" id="node21" href="$classbots_1_1GreataxeWeapon.html" title="Weapon that deals variable high damage with a bonus to damage. Uses Strength. " alt="" coords="418,765,585,792"/>
+<area shape="rect" id="node22" href="$classbots_1_1RapierWeapon.html" title="Weapon that relies upon high accuracy attacks to consistently damage. Uses Dexterity. " alt="" coords="427,816,575,843"/>
+<area shape="rect" id="node23" href="$classbots_1_1SwordAndShieldWeapon.html" title="Weapon that deals small damage, but gives a bonus to AC. Uses higher of Dexterity and Strength..." alt="" coords="396,867,607,893"/>
+<area shape="rect" id="node24" href="$classbots_1_1TwinDaggersWeapon.html" title="Weapon that relies upon multiple small attacks to deal damage. Uses Dexterity. " alt="" coords="408,917,595,944"/>
+<area shape="rect" id="node25" href="$classbots_1_1WarhammerWeapon.html" title="Weapon that deals consistent high damage and hits often. Uses Strength. " alt="" coords="408,968,595,995"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="bots::RapierWeapon" name="bots::RapierWeapon">
+<area shape="rect" id="node2" href="$classbots_1_1WeaponItem.html" title="Items that fill the weapon slot of a battle bot. " alt="" coords="11,229,148,256"/>
+<area shape="rect" id="node3" href="$classbots_1_1BattleBotItem.html" title="Items that can be added to a battle bot to modify its stats. " alt="" coords="50,81,197,108"/>
+<area shape="rect" id="node4" href="$classbots_1_1BattleBot.html" title="Class for defining a battler in the simulator. " alt="" coords="179,229,297,256"/>
+<area shape="rect" id="node5" href="$classbots_1_1BattleRunner.html" title="Class that controls the entire battle simulation. " alt="" coords="296,81,436,108"/>
+</map>
