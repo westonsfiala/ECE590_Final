@@ -15,14 +15,13 @@ void BattleBot::reset()
     mConstitution = 0;
     mStrength = 0;
     mDexterity = 0;
-    mMovement = 6;
-    mAttackBonus = 2;
+    mAttackBonus = 0;
     mDamageBonus = 0;
 
     mAC = 0;
     mHealth = 50;
     mNumDamageDice = 1;
-    mDamageDie = 1;
+    mDamageDie = 0;
     
     mAttacks = 0;
     mHits = 0;
@@ -50,7 +49,6 @@ std::string BattleBot::display()
         botDisplay += "Attack = <1d20+" + std::to_string(attack_modifier()) + ">, ";
         botDisplay += "Damage = <" + std::to_string(num_damage_die()) + "d" + std::to_string(damage_die()) + "+" + std::to_string(damage_modifier()) + ">, ";
         botDisplay += "AC = (" + std::to_string(AC()) + ")";
-        // botDisplay += ", Movement = " + std::to_string(movement());
     }
 
     return botDisplay;
@@ -136,11 +134,6 @@ bool BattleBot::is_dead()
 uint32_t BattleBot::AC() 
 { 
     return mAC; 
-}
-
-uint32_t BattleBot::movement()
-{
-    return mMovement;
 }
 
 int32_t BattleBot::attack_modifier()

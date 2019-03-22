@@ -27,12 +27,16 @@ namespace bots {
 
             bool is_dead();
 
-            uint32_t movement();
             uint32_t AC();
             int32_t attack_modifier();
             uint32_t num_damage_die();
             uint32_t damage_die();
             int32_t damage_modifier();
+
+            
+            int32_t constitution() { return mConstitution; }
+            int32_t strength() { return mStrength; }
+            int32_t dexterity() { return mDexterity; }
 
             std::vector<int32_t> get_config();
 
@@ -44,7 +48,6 @@ namespace bots {
             int32_t mConstitution;
             int32_t mStrength;
             int32_t mDexterity;
-            uint32_t mMovement;
             int32_t mAttackBonus;
             int32_t mDamageBonus;
 
