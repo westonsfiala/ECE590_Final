@@ -10,6 +10,8 @@ set -o nounset
 # Make everything for running the fraction tests.
 make all
 
+make docs
+
 # Run the tests for fraction.
 # echo "Running unit tests from ELMA"
 # mkdir -p copiedTests;

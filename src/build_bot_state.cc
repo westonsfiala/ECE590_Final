@@ -34,7 +34,6 @@ void BuildBotState::entry(const Event& e)
     build_actions();
     set_actions();
 }
-}
 
 std::string BuildBotState::title()
 {
