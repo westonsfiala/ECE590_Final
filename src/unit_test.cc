@@ -12,14 +12,14 @@ using namespace bots;
 class AllComboTester : public Process
 {
     public:
-        RunnerTester(BattleRunner& runner) : mRunner(runner)
+        AllComboTester(BattleRunner& runner) : mRunner(runner)
         {
             mKeys = {};
             mKeyPos = 0;
             mFirstRun = true;
             mCount = 0;
             // Loop through all of the combinations 20 times to get a statistically signigicant result.
-            mMaxcount = (5*5*5*5)*(5*5*5*5)*20;
+            mMaxCount = (5*5*5*5)*(5*5*5*5)*20;
         }
 
         void init() {}
@@ -35,8 +35,8 @@ class AllComboTester : public Process
 
                 mKeys.clear();
 
-                mKeys.push_back('p') // Go to prepare
-                mKeys.push_back('1') // Create bot 1
+                mKeys.push_back('p'); // Go to prepare
+                mKeys.push_back('1'); // Create bot 1
                 button = tempCount % 5;
                 tempCount /= 5;
                 mKeys.push_back('1' + button); // Select frame
@@ -50,7 +50,7 @@ class AllComboTester : public Process
                 tempCount /= 5;
                 mKeys.push_back('1' + button); // Select specialty
                 mKeys.push_back('y'); // Accept build
-                mKeys.push_back('2') // Create bot 2
+                mKeys.push_back('2'); // Create bot 2
                 button = tempCount % 5;
                 tempCount /= 5;
                 mKeys.push_back('1' + button); // Select frame
@@ -71,7 +71,7 @@ class AllComboTester : public Process
                 mCount++; // increment the count
             }
 
-            if(mCount > mMaxcount)
+            if(mCount > mMaxCount)
             {
                 halt();
             }
@@ -306,6 +306,7 @@ TEST(runner, pressRandom)
     EXPECT_NO_THROW(m.run());
 }
 
+// DISABLE THIS TEST IF YOU DO NOT WANT TO RUN FOR A COUPLE HOURS.
 TEST(runner, allComboTester)
 {
     Manager m;
@@ -314,7 +315,7 @@ TEST(runner, allComboTester)
     runner.disable_log();
 
     // Schedule all of the tasks.
-    m.schedule(rPresser, 10ms)
+    m.schedule(comboTester, 10ms)
      .schedule(runner, 10ms)
      .init()
      .use_simulated_time();
