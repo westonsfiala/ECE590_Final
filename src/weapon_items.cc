@@ -5,7 +5,7 @@ using namespace bots;
 
 int32_t TwinDaggersWeapon::attack_modifier()
 {
-    auto mod = 2;
+    auto mod = 3;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->dexterity();
@@ -25,7 +25,7 @@ int32_t TwinDaggersWeapon::damage_modifier()
 
 int32_t RapierWeapon::attack_modifier()
 {
-    auto mod = 3;
+    auto mod = 4;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->dexterity();
@@ -35,7 +35,7 @@ int32_t RapierWeapon::attack_modifier()
 
 int32_t RapierWeapon::damage_modifier()
 { 
-    auto mod = 1;
+    auto mod = 0;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->dexterity();
@@ -65,7 +65,7 @@ int32_t SwordAndShieldWeapon::damage_modifier()
 
 int32_t WarhammerWeapon::attack_modifier()
 {
-    auto mod = 3;
+    auto mod = 1;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->strength();
@@ -75,7 +75,7 @@ int32_t WarhammerWeapon::attack_modifier()
 
 int32_t WarhammerWeapon::damage_modifier()
 { 
-    auto mod = 2;
+    auto mod = 0;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->strength();
@@ -85,7 +85,7 @@ int32_t WarhammerWeapon::damage_modifier()
 
 int32_t GreataxeWeapon::attack_modifier()
 {
-    auto mod = 0;
+    auto mod = 2;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->strength();
@@ -95,7 +95,7 @@ int32_t GreataxeWeapon::attack_modifier()
 
 int32_t GreataxeWeapon::damage_modifier()
 { 
-    auto mod = 1;
+    auto mod = 0;
     if(mAttachedBot != nullptr)
     {
         mod += mAttachedBot->strength();

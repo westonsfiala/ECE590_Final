@@ -197,7 +197,7 @@ TEST(runner, pressRandom)
 {
     Manager m;
     BattleRunner runner;
-    RandomKeyPresser rPresser(runner, false, 100000);
+    RandomKeyPresser rPresser(runner, false, 1000000);
 
     // Schedule all of the tasks.
     m.schedule(rPresser, 10ms)

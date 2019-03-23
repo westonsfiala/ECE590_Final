@@ -322,7 +322,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
 <div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="classbots_1_1BattleBot.html#a4226d3d49c6ef492d93dd28ef54830b3">  234</a></span>&#160;int32_t <a class="code" href="classbots_1_1BattleBot.html#a4226d3d49c6ef492d93dd28ef54830b3">BattleBot::AC</a>()</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;{</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">auto</span> value = 10 + <a class="code" href="classbots_1_1BattleBot.html#a92d5190672faa1852fd822358fc81a59">dexterity</a>();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">auto</span> value = 0;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    value += mFrame-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#ae1eb803ddb159b523b942e29150815e3">AC_modifier</a>();</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    value += mArmor-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#ae1eb803ddb159b523b942e29150815e3">AC_modifier</a>();</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    value += mWeapon-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#ae1eb803ddb159b523b942e29150815e3">AC_modifier</a>();</div>
@@ -332,7 +332,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
 <div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classbots_1_1BattleBot.html#a71d40e344f2bd8a0ce662015d0fbfd18">  244</a></span>&#160;int32_t <a class="code" href="classbots_1_1BattleBot.html#a71d40e344f2bd8a0ce662015d0fbfd18">BattleBot::num_damage_die</a>()</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;{</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keyword">auto</span> value = 1;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keyword">auto</span> value = 0;</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    value += mFrame-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#a83eb98b3f91a778e89c06de547f8ba24">num_damage_dice_modifier</a>();</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    value += mArmor-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#a83eb98b3f91a778e89c06de547f8ba24">num_damage_dice_modifier</a>();</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    value += mWeapon-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#a83eb98b3f91a778e89c06de547f8ba24">num_damage_dice_modifier</a>();</div>
@@ -352,7 +352,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
 <div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classbots_1_1BattleBot.html#a757a8d1701e6fdc1c6387dc2ddf85fe7">  264</a></span>&#160;int32_t <a class="code" href="classbots_1_1BattleBot.html#a757a8d1701e6fdc1c6387dc2ddf85fe7">BattleBot::num_attacks</a>()</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;{</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keyword">auto</span> value = 1;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keyword">auto</span> value = 0;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    value += mFrame-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#a80876ab0d07748ffc60953164a49d16a">num_attacks_modifier</a>();</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    value += mArmor-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#a80876ab0d07748ffc60953164a49d16a">num_attacks_modifier</a>();</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    value += mWeapon-&gt;<a class="code" href="classbots_1_1BattleBotItem.html#a80876ab0d07748ffc60953164a49d16a">num_attacks_modifier</a>();</div>
@@ -639,7 +639,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 22 2019 23:22:36 for My Elma Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 23 2019 03:43:04 for My Elma Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

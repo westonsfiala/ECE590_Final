@@ -233,7 +233,7 @@ int32_t BattleBot::dexterity()
 
 int32_t BattleBot::AC()
 {
-    auto value = 10 + dexterity();
+    auto value = 0;
     value += mFrame->AC_modifier();
     value += mArmor->AC_modifier();
     value += mWeapon->AC_modifier();
@@ -243,7 +243,7 @@ int32_t BattleBot::AC()
 
 int32_t BattleBot::num_damage_die()
 {
-    auto value = 1;
+    auto value = 0;
     value += mFrame->num_damage_dice_modifier();
     value += mArmor->num_damage_dice_modifier();
     value += mWeapon->num_damage_dice_modifier();
@@ -263,7 +263,7 @@ int32_t BattleBot::damage_die()
 
 int32_t BattleBot::num_attacks()
 {
-    auto value = 1;
+    auto value = 0;
     value += mFrame->num_attacks_modifier();
     value += mArmor->num_attacks_modifier();
     value += mWeapon->num_attacks_modifier();
