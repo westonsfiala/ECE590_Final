@@ -12,12 +12,6 @@ make all
 
 make docs
 
-# Run the tests for fraction.
-# echo "Running unit tests from ELMA"
-# mkdir -p copiedTests;
-# cp /usr/local/src/elma/test/bin/test copiedTests/
-# ./copiedTests/test
-
 # ./bin/ECE590_Final
 ./bin/test
 

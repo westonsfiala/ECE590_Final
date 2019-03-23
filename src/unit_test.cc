@@ -9,6 +9,100 @@
 using namespace elma;
 using namespace bots;
 
+class AllComboTester : public Process
+{
+    public:
+        RunnerTester(BattleRunner& runner) : mRunner(runner)
+        {
+            mKeys = {};
+            mKeyPos = 0;
+            mFirstRun = true;
+            mCount = 0;
+            // Loop through all of the combinations 20 times to get a statistically signigicant result.
+            mMaxcount = (5*5*5*5)*(5*5*5*5)*20;
+        }
+
+        void init() {}
+        void start() {}
+        void update() 
+        {
+            if(mKeyPos >= mKeys.size() || mFirstRun)
+            {
+                mFirstRun = false;
+                mKeyPos = 0;
+                auto tempCount = mCount;
+                auto button = 0;
+
+                mKeys.clear();
+
+                mKeys.push_back('p') // Go to prepare
+                mKeys.push_back('1') // Create bot 1
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select frame
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select armor
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select weapon
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select specialty
+                mKeys.push_back('y'); // Accept build
+                mKeys.push_back('2') // Create bot 2
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select frame
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select armor
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select weapon
+                button = tempCount % 5;
+                tempCount /= 5;
+                mKeys.push_back('1' + button); // Select specialty
+                mKeys.push_back('y'); // Accept build
+                mKeys.push_back('b'); // Start the battle
+                mKeys.push_back('p'); // Procede to results
+                mKeys.push_back('r'); // Return to Start
+
+                mCount++; // increment the count
+            }
+
+            if(mCount > mMaxcount)
+            {
+                halt();
+            }
+
+            if(mKeyPos < mKeys.size())
+            {
+                auto key = mKeys[mKeyPos];
+                // If we are in the battle state and preparing for results, wait.
+                if(key == 'p' // Procede for results
+                && mRunner.get_action_keys().size() == 1 // In the battle state.
+                && mRunner.get_action_keys()[0] == 'a') // ^
+                {
+                    // Do nothing till above is false;
+                }
+                else
+                {
+                    mRunner.act_on_key(key);
+                    mKeyPos++;
+                }
+            }
+        }
+        void stop() {}
+
+        BattleRunner& mRunner;
+        std::vector<int32_t> mKeys;
+        uint32_t mKeyPos;
+        bool mFirstRun;
+        uint64_t mCount;
+        uint64_t mMaxCount;
+};
+
 class RunnerTester : public Process
 {
     public:
@@ -112,6 +206,7 @@ TEST(runner, quit_immediately)
     Manager m;
     BattleRunner runner;
     RunnerTester rTester(runner, {'q'}, false);
+    runner.disable_log();
 
     // Schedule all of the tasks.
     m.schedule(rTester, 10ms)
@@ -126,6 +221,7 @@ TEST(runner, run_one_battle)
 {
     Manager m;
     BattleRunner runner;
+    runner.disable_log();
 
     RunnerTester rTester(runner, 
     {
@@ -183,6 +279,7 @@ TEST(runner, pressRandomAllowed)
     Manager m;
     BattleRunner runner;
     RandomKeyPresser rPresser(runner, true, 100000);
+    runner.disable_log();
 
     // Schedule all of the tasks.
     m.schedule(rPresser, 10ms)
@@ -198,6 +295,23 @@ TEST(runner, pressRandom)
     Manager m;
     BattleRunner runner;
     RandomKeyPresser rPresser(runner, false, 1000000);
+    runner.disable_log();
+
+    // Schedule all of the tasks.
+    m.schedule(rPresser, 10ms)
+     .schedule(runner, 10ms)
+     .init()
+     .use_simulated_time();
+
+    EXPECT_NO_THROW(m.run());
+}
+
+TEST(runner, allComboTester)
+{
+    Manager m;
+    BattleRunner runner;
+    AllComboTester comboTester(runner);
+    runner.disable_log();
 
     // Schedule all of the tasks.
     m.schedule(rPresser, 10ms)
