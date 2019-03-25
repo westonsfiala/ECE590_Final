@@ -12,6 +12,6 @@ make all
 
 make docs
 
-# ./bin/ECE590_Final
-./bin/test
+./bin/ECE590_Final
+# ./bin/test
 
